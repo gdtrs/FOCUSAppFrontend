@@ -14,7 +14,7 @@ import { ThemeProvider } from '@mui/material/styles';
 import { useAuth } from "../../context/AuthContext";
 import { Link } from "react-router-dom";
 import { themeOptionLight, themeOptionDark } from "./Welcome";
-
+import { useNavigate } from "react-router-dom";
 
 
 function Copyright(props) {
@@ -33,6 +33,7 @@ function Copyright(props) {
 const Login2 = () => {
 
     const auth = useAuth();
+    const navigate = useNavigate();
 
     const { displayName } = auth.user
     console.log(displayName)
@@ -55,6 +56,7 @@ const Login2 = () => {
       try {
         const result = await auth.loginWithGoogle();
         console.log("Usuario autenticado con Google:", result.user.displayName);
+        navigate('/generalinfo')
       } catch (error) {
         if (error.code === "auth/popup-closed-by-user") {
           // El usuario cerró manualmente la ventana emergente de Google
