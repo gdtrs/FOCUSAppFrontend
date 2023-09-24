@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -55,6 +55,29 @@ export default function GeneralInfo() {
       studentidentifier: '',
     });
 
+    const [userDataExists, setUserDataExists] = useState(false);
+
+    useEffect(() => {
+      const checkUserDataExists = async () => {
+        try {
+          const response = await axios.get(
+            `http://localhost:8000/users_service/get_by_nickname/${auth.user.displayName}`
+          );
+    
+          if (response.status === 200) {
+            // Comprueba si el usuario existe en la respuesta de la API
+            if (response.data && response.data.nickname) {
+              setUserDataExists(true);
+            }
+          }
+        } catch (error) {
+          console.error('Error al verificar los datos del usuario:', error);
+        }
+      };
+    
+      checkUserDataExists();
+    }, [auth.user.displayName]);
+    
     // Funciones para actualizar los datos del usuario
     const handleUserChange = (field, value) => {
         setUserData({ ...userData, [field]: value });
@@ -102,6 +125,7 @@ export default function GeneralInfo() {
           if (response.status === 200) {
             // Los datos se guardaron exitosamente
             console.log('Datos enviados con exito') // Mostrar un log en la consola
+            navigate('/home-screen')
           } else {
             // Hubo un error al guardar los datos
             console.error('Error al guardar los datos en el servidor');
@@ -126,6 +150,10 @@ export default function GeneralInfo() {
 
   return (
     <React.Fragment>
+      {userDataExists ? (
+        // Redirigir al usuario si los datos ya existen
+        navigate('/home-screen')
+      ) : (
         <ThemeProvider theme={themeOptionDark}>
             <CssBaseline />
             <AppBar
@@ -162,17 +190,7 @@ export default function GeneralInfo() {
                     </Step>
                     ))}
                 </Stepper>
-                {activeStep === steps.length ? (
-                    <React.Fragment>
-                    <Typography variant="h5" gutterBottom>
-                        Datos guardados con éxito!
-                    </Typography>
-                    <Button>
-                        Ir a la pantalla de Inicio
-                    </Button>
-                    </React.Fragment>
-                ) : (
-                    <React.Fragment>
+                <React.Fragment>
                     {getStepContent(activeStep)}
                     <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
                         {activeStep !== 0 && (
@@ -189,12 +207,12 @@ export default function GeneralInfo() {
                         {activeStep === steps.length - 1 ? 'Guardar' : 'Siguiente'}
                         </Button>
                     </Box>
-                    </React.Fragment>
-                )}
+                </React.Fragment>
                 </Paper>
                 <Copyright />
             </Container>
         </ThemeProvider>
+      )}
     </React.Fragment>
   );
 }
