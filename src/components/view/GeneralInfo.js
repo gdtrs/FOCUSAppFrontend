@@ -9,19 +9,24 @@ import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
 import Button from '@mui/material/Button';
-import Link from '@mui/material/Link';
+import LogoutIcon from '@mui/icons-material/Logout';
+import { Link } from "react-router-dom";
 import Typography from '@mui/material/Typography';
 import InfoUserForm from '../UserCredentials';
 import InfoStudentForm from '../StudentCredentials';
 import RevisarInfo from '../ReviewInfo';
 import { ThemeProvider } from '@mui/material/styles';
 import { themeOptionDark } from './Welcome';
+import { useAuth } from "../../context/AuthContext";
+import { useNavigate } from "react-router-dom";
+import { IconButton } from '@mui/material';
+import axios from 'axios';
 
 function Copyright() {
   return (
     <Typography variant="body2" color="text.secondary" align="center">
       {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
+      <Link style={{ color: '#fff' }} href="https://mui.com/">
         FocusApp
       </Link>{' '}
       {new Date().getFullYear()}
@@ -32,6 +37,10 @@ function Copyright() {
 
 
 export default function GeneralInfo() {
+
+    const auth = useAuth();
+    const {displayName} = auth.user;
+    const navigate = useNavigate();
 
     const [activeStep, setActiveStep] = useState(0);
     const [userData, setUserData] = useState({
@@ -55,6 +64,11 @@ export default function GeneralInfo() {
     const handleStudentChange = (field, value) => {
         setStudentData({ ...studentData, [field]: value });
     };
+
+    const handleLogout = (e) => {
+        auth.logout();
+        navigate('/login');
+    }
   
     const handleNext = () => {
       setActiveStep(activeStep + 1);
@@ -66,6 +80,36 @@ export default function GeneralInfo() {
 
     const steps = ['Info. Usuario', 'Info. Estudiante', 'Confirmar Info.'];
 
+    const handleSave = async () => {
+        try {
+          // Preparar los datos para enviar al servidor
+          const dataToSave = {
+            firebaseAuthenticationId: auth.user.uid,
+            user: {
+                nickname: userData.nickname,
+                name: userData.name,
+                firstSurname: userData.firstlastname,
+                secondSurname: userData.secondlastname,
+                grade: studentData.grade,
+                class: studentData.class,
+                studentIdentifier: studentData.studentidentifier,
+            }
+          };
+      
+          // Realizar la solicitud POST al servidor para guardar los datos
+          const response = await axios.post('http://localhost:8000/users_service/create', dataToSave);
+      
+          if (response.status === 200) {
+            // Los datos se guardaron exitosamente
+            console.log('Datos enviados con exito') // Mostrar un log en la consola
+          } else {
+            // Hubo un error al guardar los datos
+            console.error('Error al guardar los datos en el servidor');
+          }
+        } catch (error) {
+          console.error('Error al procesar la solicitud POST:', error);
+        }
+      };
 
     function getStepContent(step) {
     switch (step) {
@@ -93,14 +137,21 @@ export default function GeneralInfo() {
                 borderBottom: (t) => `1px solid ${t.palette.divider}`,
                 }}
             >
-                <Toolbar>
-                <Typography variant="h6" color="secondary" noWrap>
-                    FOCUS APP
+            <Toolbar>
+                <Typography variant="h6" color="inherit" noWrap>
+                FOCUS APP
                 </Typography>
-                </Toolbar>
+                <Box sx={{ flexGrow: 1 }} /> {/* Espacio en blanco para empujar los elementos al lado derecho */}
+                <Typography variant="body1" color="inherit" noWrap>
+                {displayName}
+                </Typography>
+                <IconButton color='secondary' onClick={handleLogout} sx={{ ml: 1}}>
+                    <LogoutIcon/>
+                </IconButton>
+            </Toolbar>
             </AppBar>
-            <Container component="main" maxWidth="sm" sx={{ mb: 4 }}>
-                <Paper elevation={6} sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}>
+            <Container component="main" maxWidth="sm">
+                <Paper elevation={6} sx={{ mb: 4, my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}>
                 <Typography component="h1" variant="h4" align="center">
                     Información
                 </Typography>
@@ -114,13 +165,11 @@ export default function GeneralInfo() {
                 {activeStep === steps.length ? (
                     <React.Fragment>
                     <Typography variant="h5" gutterBottom>
-                        Thank you for your order.
+                        Datos guardados con éxito!
                     </Typography>
-                    <Typography variant="subtitle1">
-                        Your order number is #2001539. We have emailed your order
-                        confirmation, and will send you an update when your order has
-                        shipped.
-                    </Typography>
+                    <Button>
+                        Ir a la pantalla de Inicio
+                    </Button>
                     </React.Fragment>
                 ) : (
                     <React.Fragment>
@@ -134,7 +183,7 @@ export default function GeneralInfo() {
 
                         <Button
                         variant="contained"
-                        onClick={handleNext}
+                        onClick={activeStep === steps.length - 1 ? handleSave : handleNext}
                         sx={{ mt: 3, ml: 1 }}
                         >
                         {activeStep === steps.length - 1 ? 'Guardar' : 'Siguiente'}

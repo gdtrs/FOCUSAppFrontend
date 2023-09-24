@@ -23,7 +23,7 @@ export default function InfoUserForm({ onUserChange }) {
             name="nickname"
             label="Usuario"
             fullWidth
-            autoComplete="given-name"
+            autoComplete="off"
             variant="standard"
             onChange={handleUserChange}
           />
@@ -35,7 +35,7 @@ export default function InfoUserForm({ onUserChange }) {
             name="name"
             label="Nombre"
             fullWidth
-            autoComplete="family-name"
+            autoComplete="given-name"
             variant="standard"
             onChange={handleUserChange}
           />
@@ -47,7 +47,7 @@ export default function InfoUserForm({ onUserChange }) {
             name="firstlastname"
             label="Primer Apellido"
             fullWidth
-            autoComplete=""
+            autoComplete="family-name"
             variant="standard"
             onChange={handleUserChange}
           />
@@ -58,7 +58,7 @@ export default function InfoUserForm({ onUserChange }) {
             name="secondlastname"
             label="Segundo Apellido"
             fullWidth
-            autoComplete=""
+            autoComplete="family-name"
             variant="standard"
             onChange={handleUserChange}
           />
