@@ -35,7 +35,6 @@ function Copyright() {
   );
 }
 
-
 export default function GeneralInfo() {
 
     const auth = useAuth();
@@ -60,8 +59,11 @@ export default function GeneralInfo() {
     useEffect(() => {
       const checkUserDataExists = async () => {
         try {
+          // Obtén el firebaseAuthenticationId del usuario actual (supongo que está en auth.user.uid)
+          const firebaseAuthenticationId = auth.user.uid;
+    
           const response = await axios.get(
-            `http://localhost:8000/users_service/get_by_nickname/${auth.user.displayName}`
+            `http://localhost:8000/users_service/get_by_firebase_id/${firebaseAuthenticationId}`
           );
     
           if (response.status === 200) {
@@ -76,7 +78,11 @@ export default function GeneralInfo() {
       };
     
       checkUserDataExists();
-    }, [auth.user.displayName]);
+    }, [auth.user.uid]);
+    
+    //
+    //CAMBIAR
+    //
     
     // Funciones para actualizar los datos del usuario
     const handleUserChange = (field, value) => {
