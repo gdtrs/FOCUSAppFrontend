@@ -13,7 +13,7 @@ import Typography from '@mui/material/Typography';
 import { ThemeProvider } from '@mui/material/styles';
 import { useAuth } from "../../context/AuthContext";
 import { Link } from "react-router-dom";
-import { themeOptionLight, themeOptionDark } from "./Welcome";
+import { themeOptionDark } from "./Welcome";
 import { useNavigate } from "react-router-dom";
 
 

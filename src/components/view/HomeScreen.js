@@ -26,8 +26,6 @@ import {
   CssBaseline
 } from '@mui/material';
 //MATERIAL UI ICONS
-import LogoutIcon from '@mui/icons-material/Logout';
-import AdbIcon from '@mui/icons-material/Adb';
 import HomeIcon from '@mui/icons-material/Home';
 import EmailIcon from '@mui/icons-material/Email';
 import InsertEmoticonIcon from '@mui/icons-material/InsertEmoticon';
@@ -51,7 +49,6 @@ const settings = ['Perfil', 'Cerrar Sesión', 'Configuración'];
 export default function StickyFooter() {
 
   const auth = useAuth();
-  const {displayName} = auth.user;
   const navigate = useNavigate();
 
   const handleLogout = (e) => {
