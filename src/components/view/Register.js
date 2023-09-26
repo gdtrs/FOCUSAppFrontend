@@ -3,6 +3,8 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
+import Snackbar from "@mui/material/Snackbar";
+import Alert from "@mui/material/Alert";
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
@@ -32,12 +34,27 @@ function Copyright(props) {
     const auth = useAuth();
     const [ emailRegister, setEmailRegister ] = useState("");
     const [ passwordRegister, setPasswordRegister ] = useState("");
+    const [open, setOpen] = useState(false);
 
     const handleRegister = (e) => {
 
         e.preventDefault()
         auth.register( emailRegister, passwordRegister )
 
+        setEmailRegister("");
+        setPasswordRegister("");
+    };
+
+    const handleClick = () => {
+      setOpen(true);
+    };
+
+    const handleClose = (e, reason) => {
+      if (reason === 'clickaway') {
+        return;
+      }
+  
+      setOpen(false);
     };
   
     return (
@@ -113,9 +130,15 @@ function Copyright(props) {
                   fullWidth
                   variant="contained"
                   sx={{ mt: 3, mb: 2 }}
+                  onClick={() => handleClick()}
                 >
                   Registrarse
                 </Button>
+                <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+                  <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+                    Usuario Registrado con Éxito!
+                  </Alert>
+                </Snackbar>
                 <Grid container>
                   <Grid item xs>
                     <Link to="/login" variant="body2" style={{ color: '#fff' }}>

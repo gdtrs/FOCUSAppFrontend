@@ -45,7 +45,8 @@ const Login2 = () => {
       e.preventDefault();
       try {
         await auth.login(email, password);
-        
+        console.log("Usuario autenticado con correo y contraseña:", email, " ", password)
+        navigate('/generalinfo')
       } catch (error) {
         console.error("Error al iniciar sesión:", error);
       }
@@ -144,6 +145,7 @@ const Login2 = () => {
                 variant="contained"
                 color="secondary"
                 sx={{ mt: 3, mb: 2 }}
+                onClick={handleLogin}
               >
                 Iniciar Sesión
               </Button>
