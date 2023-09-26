@@ -121,7 +121,7 @@ const Login2 = () => {
                 fullWidth
                 color="secondary"
                 id="email"
-                label="Email Address"
+                label="Correo Electrónico"
                 name="email"
                 autoComplete="email"
                 autoFocus
@@ -133,7 +133,7 @@ const Login2 = () => {
                 fullWidth
                 color="secondary"
                 name="password"
-                label="Password"
+                label="Contraseña"
                 type="password"
                 id="password"
                 autoComplete="current-password"
