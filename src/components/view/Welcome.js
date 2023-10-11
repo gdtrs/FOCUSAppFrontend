@@ -65,9 +65,13 @@ const Welcome = () => {
             t.palette.mode === 'dark' ? t.palette.grey[50] : t.palette.grey[900],
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          alignItems: 'center', // Centrar verticalmente en la pantalla
-          justifyContent: 'center', // Centrar horizontalmente en la pantalla
+          alignItems: 'center',
+          justifyContent: 'center',
+          '@media (max-width: 481px)': {
+            backgroundImage: 'url(/backgroundwelcomephone.png)', // Cambia la imagen de fondo para pantallas de 414px o menos
+          },
         }}
+        
       >
         <CssBaseline />
         <Box
@@ -78,7 +82,7 @@ const Welcome = () => {
             marginTop: '200px',
             padding: '20px',
             textAlign: 'center',
-            boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)'
+            boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
             }}
         >
           <Typography variant="h3" gutterBottom>
