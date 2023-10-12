@@ -55,6 +55,7 @@ const Welcome = () => {
   return (
     <ThemeProvider theme={themeOptionDark}>
       <Grid
+        className="animate__animated animate__fadeIn"
         container
         component="main"
         sx={{
@@ -85,7 +86,7 @@ const Welcome = () => {
             boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
             }}
         >
-          <Typography variant="h3" gutterBottom>
+          <Typography className='animate__heartBeat' variant="h3" gutterBottom>
             ¡Bienvenido a Nuestra Aplicación!
           </Typography>
           <Link to="/register" style={{ textDecoration: 'none' }}>

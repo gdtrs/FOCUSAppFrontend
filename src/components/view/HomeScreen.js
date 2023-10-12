@@ -32,6 +32,7 @@ import InsertEmoticonIcon from '@mui/icons-material/InsertEmoticon';
 import WeekendIcon from '@mui/icons-material/Weekend';
 import AddIcon from '@mui/icons-material/Add';
 import AssignmentIcon from '@mui/icons-material/Assignment';
+import { AccountCircle, Settings, ExitToApp } from '@mui/icons-material';
 
 const StyledFab = styled(Fab)({
   position: 'absolute',
@@ -44,7 +45,7 @@ const StyledFab = styled(Fab)({
 
 const pages = ['Blog'];
 
-const settings = ['Perfil', 'Cerrar Sesión', 'Configuración'];
+const settings = ['Perfil', 'Configuración', 'Cerrar Sesión'];
 
 export default function StickyFooter() {
 
@@ -229,11 +230,14 @@ export default function StickyFooter() {
                   open={Boolean(anchorElUser)}
                   onClose={handleCloseUserMenu}
                 >
-                  {settings.map((setting) => (
-                    <MenuItem key={setting} onClick={() => handleMenuAction(setting)}>
-                      <Typography textAlign="center">{setting}</Typography>
-                    </MenuItem>
-                  ))}
+                    {settings.map((setting) => (
+                      <MenuItem key={setting} onClick={() => handleMenuAction(setting)}>
+                        {setting === 'Perfil' ? <AccountCircle color='primary' sx={{mr: 2}} /> : null}
+                        {setting === 'Configuración' ? <Settings color='primary' sx={{mr: 2}} /> : null}
+                        {setting === 'Cerrar Sesión' ? <ExitToApp color='secondary' sx={{mr: 2}} /> : null}
+                        <Typography textAlign="center">{setting}</Typography>
+                      </MenuItem> 
+                    ))}
                 </Menu>
               </Box>
             </Toolbar>
@@ -271,22 +275,10 @@ export default function StickyFooter() {
             backgroundPosition: 'center',
             }}>
         <Toolbar>
-          <IconButton color="inherit">
-            <WeekendIcon />
-          </IconButton>
-          <IconButton color="inherit">
-            <InsertEmoticonIcon />
-          </IconButton>
           <StyledFab color="secondary" aria-label="add">
             <AddIcon />
           </StyledFab>
           <Box sx={{ flexGrow: 1 }} />
-          <IconButton color="inherit">
-            <AssignmentIcon />
-          </IconButton>
-          <IconButton color="inherit">
-            <EmailIcon />
-          </IconButton>
         </Toolbar>
       </AppBar>
       </Box>

@@ -15,6 +15,7 @@ import { useAuth } from "../../context/AuthContext";
 import { Link } from "react-router-dom";
 import { themeOptionDark } from "./Welcome";
 import { useNavigate } from "react-router-dom";
+import 'animate.css';
 
 
 function Copyright(props) {
@@ -71,7 +72,7 @@ const Login2 = () => {
 
   return (
     <ThemeProvider theme={themeOptionDark}>
-      <Grid container component="main" sx={{ height: '100vh' }}>
+      <Grid container component="main" sx={{ height: '100vh' }} className="animate__animated animate__fadeIn">
         <CssBaseline />
         <Grid
           item
@@ -108,10 +109,10 @@ const Login2 = () => {
               alignItems: 'center',
             }}
           >
-            <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+            <Avatar className="animate__bounceIn" sx={{ m: 1, bgcolor: 'secondary.main' }}>
               <LockOutlinedIcon />
             </Avatar>
-            <Typography component="h1" variant="h5">
+            <Typography className="animate__bounceIn" component="h1" variant="h5">
               Inicio de Sesión
             </Typography>
             <Box component="form" noValidate onSubmit={handleLogin} sx={{ mt: 1 }}>

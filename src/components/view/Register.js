@@ -15,6 +15,7 @@ import { ThemeProvider } from '@mui/material/styles';
 import { useAuth } from "../../context/AuthContext";
 import { Link } from "react-router-dom";
 import { themeOptionLight, themeOptionDark } from "./Welcome";
+import 'animate.css';
 
 function Copyright(props) {
     return (
@@ -59,7 +60,7 @@ function Copyright(props) {
   
     return (
       <ThemeProvider theme={themeOptionDark}>
-        <Grid container component="main" sx={{ height: '100vh' }}>
+        <Grid container component="main" sx={{ height: '100vh' }} className="animate__animated animate__fadeIn">
           <CssBaseline />
           <Grid
             item
@@ -75,7 +76,7 @@ function Copyright(props) {
               backgroundPosition: 'center',
             }}
           />
-        <Grid 
+        <Grid
             item xs={12}
             sm={8}
             md={5}
@@ -96,10 +97,10 @@ function Copyright(props) {
                 alignItems: 'center',
               }}
             >
-              <Avatar sx={{ m: 1, bgcolor: 'primary.main' }}>
+              <Avatar className="animate__bounceIn" sx={{ m: 1, bgcolor: 'primary.main' }}>
                 <PersonIcon />
               </Avatar>
-              <Typography component="h1" variant="h5">
+              <Typography className="animate__bounceIn" component="h1" variant="h5">
                 Registrarse
               </Typography>
               <Box component="form" noValidate onSubmit={handleRegister} sx={{ mt: 1 }}>
