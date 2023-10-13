@@ -14,8 +14,7 @@ import Typography from '@mui/material/Typography';
 import { ThemeProvider } from '@mui/material/styles';
 import { useAuth } from "../../context/AuthContext";
 import { Link } from "react-router-dom";
-import { themeOptionLight, themeOptionDark } from "./Welcome";
-import 'animate.css';
+import { themeOptionDark } from "./Welcome";
 
 function Copyright(props) {
     return (
@@ -114,6 +113,7 @@ function Copyright(props) {
                   autoComplete="email"
                   autoFocus
                   onChange={(e) => setEmailRegister(e.target.value)}
+                  className="animate__animated animate__zoomIn"
                 />
                 <TextField
                   margin="normal"
@@ -125,6 +125,7 @@ function Copyright(props) {
                   id="password"
                   autoComplete="current-password"
                   onChange={(e) => setPasswordRegister(e.target.value)}
+                  className="animate__animated animate__zoomIn"
                 />
                 <Button
                   type="submit"

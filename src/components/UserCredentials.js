@@ -25,6 +25,7 @@ export default function InfoUserForm({ onUserChange }) {
             fullWidth
             autoComplete="off"
             variant="standard"
+            color='secondary'
             onChange={handleUserChange}
           />
         </Grid>
@@ -37,6 +38,7 @@ export default function InfoUserForm({ onUserChange }) {
             fullWidth
             autoComplete="given-name"
             variant="standard"
+            color='secondary'
             onChange={handleUserChange}
           />
         </Grid>
@@ -49,6 +51,7 @@ export default function InfoUserForm({ onUserChange }) {
             fullWidth
             autoComplete="family-name"
             variant="standard"
+            color='secondary'
             onChange={handleUserChange}
           />
         </Grid>
@@ -60,6 +63,7 @@ export default function InfoUserForm({ onUserChange }) {
             fullWidth
             autoComplete="family-name"
             variant="standard"
+            color='secondary'
             onChange={handleUserChange}
           />
         </Grid>

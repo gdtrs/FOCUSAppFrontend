@@ -15,8 +15,6 @@ import { useAuth } from "../../context/AuthContext";
 import { Link } from "react-router-dom";
 import { themeOptionDark } from "./Welcome";
 import { useNavigate } from "react-router-dom";
-import 'animate.css';
-
 
 function Copyright(props) {
   return (
@@ -127,6 +125,7 @@ const Login2 = () => {
                 autoComplete="email"
                 autoFocus
                 onChange={(e) => setEmail(e.target.value)}
+                className="animate__animated animate__zoomIn"
               />
               <TextField
                 margin="normal"
@@ -139,6 +138,7 @@ const Login2 = () => {
                 id="password"
                 autoComplete="current-password"
                 onChange={(e) => setPassword(e.target.value)}
+                className="animate__animated animate__zoomIn"
               />
               <Button
                 type="submit"

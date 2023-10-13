@@ -23,7 +23,8 @@ import {
   Container,
   Toolbar,
   IconButton,
-  CssBaseline
+  CssBaseline,
+  Grid
 } from '@mui/material';
 //MATERIAL UI ICONS
 import HomeIcon from '@mui/icons-material/Home';
@@ -33,6 +34,9 @@ import WeekendIcon from '@mui/icons-material/Weekend';
 import AddIcon from '@mui/icons-material/Add';
 import AssignmentIcon from '@mui/icons-material/Assignment';
 import { AccountCircle, Settings, ExitToApp } from '@mui/icons-material';
+//Componentes
+import DailyAdvice from '../DailyAdvice';
+import Slider from '../Task&HabitSlide';
 
 const StyledFab = styled(Fab)({
   position: 'absolute',
@@ -102,7 +106,7 @@ export default function StickyFooter() {
           display: 'flex',
           flexDirection: 'column',
           minHeight: '100vh',
-          backgroundImage: 'url(/backgroundhomescreen.png)',
+          backgroundImage: 'url(/backgrounddarkpurple.png)',
           backgroundRepeat: 'no-repeat',
           backgroundColor: (t) =>
             t.palette.mode === 'dark' ? t.palette.grey[50] : t.palette.grey[900],
@@ -244,26 +248,33 @@ export default function StickyFooter() {
           </Container>
         </AppBar>
 
-        <Container 
-          component="main" 
-          sx={{
-            mt: 8,
-            mb: 2,
-            }} 
-          maxWidth="sm">
-          <Typography variant="h2" component="h1" gutterBottom>
-            Sticky footer
-          </Typography>
-          <Typography variant="h5" component="h2" gutterBottom>
-            {'Pin a footer to the bottom of the viewport.'}
-            {'The footer will move as the main element of the page grows.'}
-          </Typography>
-          <Typography variant="body1">Sticky footer placeholder.</Typography>
-        </Container>
+        <Grid container spacing={6}>
+          <Grid item xs={12} md={6}>
+            <Box sx={{
+              mt: 5,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}>
+              <DailyAdvice/>
+            </Box>
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <Box sx={{
+                mt: 5,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}>
+                <Slider/>
+            </Box>
+          </Grid>
+        </Grid>
 
         <AppBar 
           position="fixed"
           color="primary"
+          elevation={12}
           sx={{
             top: 'auto',
             bottom: 0,

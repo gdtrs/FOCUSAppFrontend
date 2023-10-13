@@ -23,6 +23,7 @@ export default function InfoStudentForm({ onStudentChange }) {
             label="Grado"
             fullWidth
             variant="standard"
+            color='secondary'
             onChange={handleStudentChange}
           />
         </Grid>
@@ -33,6 +34,7 @@ export default function InfoStudentForm({ onStudentChange }) {
             label="Grupo"
             fullWidth
             variant="standard"
+            color='secondary'
             onChange={handleStudentChange}
           />
         </Grid>
@@ -44,6 +46,7 @@ export default function InfoStudentForm({ onStudentChange }) {
             helperText="Ej: 2019086"
             fullWidth
             variant="standard"
+            color='secondary'
             onChange={handleStudentChange}
           />
         </Grid>

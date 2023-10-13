@@ -54,8 +54,12 @@ export function AuthProvider({ children }){
     };
 
     const logout = async () => {
-        const response = await signOut(auth);
-        console.log(response);
+        try {
+            await signOut(auth);
+            return { message: 'Log out Succesfully!', code: '00'}
+        } catch (error) {
+            return { message: error.message, code: '01'}
+        }
     };
 
     return (

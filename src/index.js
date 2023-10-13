@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
+import 'animate.css';
+import 'atropos/css'
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 

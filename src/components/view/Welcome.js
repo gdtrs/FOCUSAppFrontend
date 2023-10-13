@@ -38,18 +38,6 @@ export const themeOptionLight = createTheme({
     }
   });
 
-function Copyright(props) {
-    return (
-      <Typography variant="body2" align="center" {...props}>
-        {'Copyright © '}
-        <Link style={{ color: '#fff' }} href="https://mui.com/">
-          Focus App
-        </Link>{' '}
-        {new Date().getFullYear()}
-        {'.'}
-      </Typography>
-    );
-  }
 
 const Welcome = () => {
   return (

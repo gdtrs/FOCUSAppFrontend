@@ -20,6 +20,7 @@ import { themeOptionDark } from './Welcome';
 import { useAuth } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { IconButton } from '@mui/material';
+import Tooltip from '@mui/material/Tooltip';
 import axios from 'axios';
 
 function Copyright() {
@@ -57,7 +58,7 @@ export default function GeneralInfo() {
     const [userDataExists, setUserDataExists] = useState(false);
 
     useEffect(() => {
-      const checkUserDataExists = async () => {
+      const checkUserDataExists = async (e) => {
         try {
           // Obtén el firebaseAuthenticationId del usuario actual (supongo que está en auth.user.uid)
           const firebaseAuthenticationId = auth.user.uid;
@@ -79,10 +80,6 @@ export default function GeneralInfo() {
     
       checkUserDataExists();
     }, [auth.user.uid]);
-    
-    //
-    //CAMBIAR
-    //
     
     // Funciones para actualizar los datos del usuario
     const handleUserChange = (field, value) => {
@@ -109,7 +106,8 @@ export default function GeneralInfo() {
 
     const steps = ['Info. Usuario', 'Info. Estudiante', 'Confirmar Info.'];
 
-    const handleSave = async () => {
+    const handleSave = async (e) => {
+        e.preventDefault();
         try {
           // Preparar los datos para enviar al servidor
           const dataToSave = {
@@ -132,7 +130,7 @@ export default function GeneralInfo() {
             // Los datos se guardaron exitosamente
             console.log('Datos enviados con exito') // Mostrar un log en la consola
             navigate('/home-screen')
-          } else {
+          } else  {
             // Hubo un error al guardar los datos
             console.error('Error al guardar los datos en el servidor');
           }
@@ -160,7 +158,20 @@ export default function GeneralInfo() {
         // Redirigir al usuario si los datos ya existen
         navigate('/home-screen')
       ) : (
-        <ThemeProvider theme={themeOptionDark}>
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            minHeight: '100vh',
+            backgroundImage: 'url(/backgroundhomescreen.png)',
+            backgroundRepeat: 'no-repeat',
+            backgroundColor: (t) =>
+              t.palette.mode === 'dark' ? t.palette.grey[50] : t.palette.grey[900],
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+        >
+          <ThemeProvider theme={themeOptionDark}>
             <CssBaseline />
             <AppBar
                 position="absolute"
@@ -169,23 +180,42 @@ export default function GeneralInfo() {
                 sx={{
                 position: 'relative',
                 borderBottom: (t) => `1px solid ${t.palette.divider}`,
+                backgroundImage: 'url(/backgrounddarkpurple.png)',
+                backgroundRepeat: 'no-repeat',
+                backgroundColor: (t) =>
+                  t.palette.mode === 'dark' ? t.palette.grey[50] : t.palette.grey[900],
+                backgroundSize: 'cover',
+                backgroundPosition: 'center'
                 }}
             >
             <Toolbar>
-                <Typography variant="h6" color="inherit" noWrap>
+                <Typography variant="h6" fontWeight='bold' color="inherit" noWrap>
                 FOCUS APP
                 </Typography>
                 <Box sx={{ flexGrow: 1 }} /> {/* Espacio en blanco para empujar los elementos al lado derecho */}
                 <Typography variant="body1" color="inherit" noWrap>
                 {displayName}
                 </Typography>
-                <IconButton color='secondary' onClick={handleLogout} sx={{ ml: 1}}>
-                    <LogoutIcon/>
-                </IconButton>
+                <Tooltip title="Cerrar Sesión">
+                  <IconButton color="secondary" onClick={handleLogout} sx={{ ml: 1 }}>
+                    <LogoutIcon />
+                  </IconButton>
+                </Tooltip>
             </Toolbar>
             </AppBar>
             <Container component="main" maxWidth="sm">
-                <Paper elevation={6} sx={{ mb: 4, my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}>
+                <Paper 
+                  className="animate__animated animate__fadeInUp" 
+                  elevation={6} 
+                  sx={{ 
+                    mb: 4,
+                    my: { xs: 3, md: 6 },
+                    p: { xs: 2, md: 3 },
+                    backgroundImage: 'url(/backgrounddarkpurple.png)',
+                    backgroundRepeat: 'no-repeat',
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center'
+                    }}>
                 <Typography component="h1" variant="h4" align="center">
                     Información
                 </Typography>
@@ -218,7 +248,8 @@ export default function GeneralInfo() {
                 <Copyright />
             </Container>
         </ThemeProvider>
+      </Box>
       )}
     </React.Fragment>
   );
-}
+} 
