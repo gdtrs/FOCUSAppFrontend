@@ -127,7 +127,7 @@ const Slider = () => {
       >
         <CardContent>
           <Typography variant="h2" component="div">
-            AGENDA DE CITAS <EventNoteIcon sx={{ fontSize: 40, color: '#fff' }} />
+            AGENDA DE CITAS
           </Typography>
           <List>
             {appointments.map((appointment) => (
@@ -176,9 +176,6 @@ const Slider = () => {
           <CardContent>
             <Typography variant="h2" component="div">
               HÁBITOS
-            </Typography>
-            <Typography variant="body2">
-              This is the content of Slide 3. You can customize it with Material-UI components.
             </Typography>
           </CardContent>
         </Card>
