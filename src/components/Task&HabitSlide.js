@@ -21,6 +21,7 @@ import ListItemText from '@mui/material/ListItemText';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import { useAuth } from '../context/AuthContext';
 import axios from 'axios';
+import Habits from './view/Habits';
 
 const formatDate = (isoDateString) => {
   const date = new Date(isoDateString)
@@ -44,6 +45,7 @@ const Slider = () => {
   const auth = useAuth();
   const [appointments, setAppointments] = useState([]);
   const [tasks, setTasks] = useState([]);
+  const [habits, setHabits] = useState([]);
 
 
   useEffect(() => {
@@ -88,6 +90,28 @@ const Slider = () => {
     };
 
     fetchTasks();
+  }, [auth.user.uid]);
+
+  useEffect(() => {
+    // Llama a la API para obtener citas pendientes cuando el componente se monta
+    const fetchHabits = async () => {
+      try {
+        const response = await axios.post(
+          'http://localhost:8000/habits_service/get_user_habits',
+          { firebaseAuthenticationId: auth.user.uid }
+        );
+
+        if (response.status === 200) {
+          setHabits(response.data);
+        } else {
+          // Manejar errores si es necesario
+        }
+      } catch (error) {
+        console.error('Error al obtener tareas:', error);
+      }
+    };
+
+    fetchHabits();
   }, [auth.user.uid]);
 
   return (
@@ -177,6 +201,35 @@ const Slider = () => {
             <Typography variant="h2" component="div">
               HÁBITOS
             </Typography>
+            <List>
+                {habits.map((habit) => (
+                  <React.Fragment key={habit.habitId}>
+                    <ListItem divider>
+                      <ListItemIcon>
+                        <AssignmentIcon />
+                      </ListItemIcon>
+                      <ListItemText
+                        primary="Titulo"
+                        secondary={habit.title}
+                        primaryTypographyProps={{ variant: 'subtitle1' }}
+                        secondaryTypographyProps={{ variant: 'body2' }}
+                      />
+                      <ListItemText
+                        primary="Descripción"
+                        secondary={habit.description}
+                        primaryTypographyProps={{ variant: 'subtitle1' }}
+                        secondaryTypographyProps={{ variant: 'body2' }}
+                      />
+                      <ListItemText
+                        primary="Fecha y Hora"
+                        secondary={formatDate(habit.datetime)}
+                        primaryTypographyProps={{ variant: 'subtitle1' }}
+                        secondaryTypographyProps={{ variant: 'body2' }}
+                      />
+                    </ListItem>
+                  </React.Fragment>
+                ))}
+              </List>
           </CardContent>
         </Card>
     </SwiperSlide>

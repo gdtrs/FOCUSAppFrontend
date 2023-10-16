@@ -8,13 +8,12 @@ import {
   List,
   ListItem,
   ListItemText,
-  ListItemAvatar,
   ListItemIcon,
-  Divider,
-  Button,
   ListItemSecondaryAction,
   IconButton,
-  Tooltip
+  Tooltip,
+  Snackbar,
+  Alert
 } from '@mui/material';
 import { Assignment as AssignmentIcon } from '@mui/icons-material';
 import { ThemeProvider } from '@mui/material/styles';
@@ -25,8 +24,8 @@ import EditIcon from '@mui/icons-material/Edit';
 import ArrowBackIosRounded from '@mui/icons-material/ArrowBackIosRounded';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useNavigate } from 'react-router-dom';
-
 import axios from 'axios';
+
 import { useAuth } from '../../context/AuthContext';
 
 const formatDate = (isoDateString) => {
@@ -53,6 +52,12 @@ export default function Tasks() {
   const [open, setOpen] = React.useState(false);
   const [editDialogOpen, setEditDialogOpen] = useState(false);
   const [selectedTask, setSelectedTask] = useState(null);
+
+  const handleClose = (e, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+  }
 
   const handleEditClick = (task) => {
     setSelectedTask(task);
@@ -93,6 +98,30 @@ export default function Tasks() {
 
     fetchTasks();
   }, [auth.user.uid]);
+
+  const handleDeleteTask = async (taskId) => {
+    try {
+        const response = await axios.post('http://localhost:8000/tasks_service/delete', {
+        taskId: taskId,
+      });
+  
+      if (response.status === 200) {
+        // Tarea eliminada con éxito, puedes realizar acciones adicionales si es necesario.
+        console.log('Tarea eliminada con éxito');
+        
+        // Actualiza la lista de tareas después de eliminar una tarea.
+        const updatedTasks = tasks.filter(task => task.taskId !== taskId);
+        setTasks(updatedTasks);
+        setOpen(true)
+      } else {
+        console.error('Error al eliminar la tarea:', response);
+        // Maneja el error de acuerdo a tus necesidades.
+      }
+    } catch (error) {
+      console.error('Error al eliminar la tarea:', error);
+      // Maneja el error de acuerdo a tus necesidades.
+    }
+  };
 
   return (
     <ThemeProvider theme={themeOptionDark}>
@@ -181,7 +210,7 @@ export default function Tasks() {
                           </IconButton>
                         </Tooltip>
                         <Tooltip title='Borrar'>
-                          <IconButton sx={{ml: 2}} edge="end" aria-label="Eliminar">
+                          <IconButton onClick={() => handleDeleteTask(task.taskId)} sx={{ml: 2}} edge="end" aria-label="Eliminar">
                             <DeleteIcon />
                           </IconButton>
                         </Tooltip>
@@ -201,6 +230,11 @@ export default function Tasks() {
             </Paper>
           </Box>
         </Container>
+        <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+          <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+              Tarea eliminada con éxito!
+          </Alert>
+        </Snackbar>
       </Box>
     </ThemeProvider>
   );

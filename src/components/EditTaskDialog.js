@@ -7,6 +7,25 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import axios from 'axios';
 
+
+const formatDate = (isoDateString) => {
+  const date = new Date(isoDateString)
+
+  const day = date.getDate() + 1
+  const month = [
+    "enero", "febrero", "marzo", "abril", "mayo", "junio",
+    "julio", "agosto", "septiembre", "noviembre", "diciembre"
+  ][date.getMonth()]
+  const year = date.getFullYear()
+  const hours = (date.getHours() % 12).toString().padStart(2, "0")
+  const minutes = date.getMinutes().toString().padStart(2, "0")
+
+  const formatted = `${day} de ${month} de ${year} a las ${hours}:${minutes}`
+
+  return formatted
+}
+
+
 const EditTaskDialog = ({ open, onClose, task, onSave }) => {
   const [editedTask, setEditedTask] = useState(task);
 
@@ -30,17 +49,18 @@ const EditTaskDialog = ({ open, onClose, task, onSave }) => {
 
   const updateTaskInDatabase = async () => {
     try {
+
       const response = await axios.post('http://localhost:8000/tasks_service/update', {
         taskId: editedTask.taskId,
-        // Envía solo las propiedades que deseas actualizar en editedTask
-        title: editedTask.title,
-        description: editedTask.description,
-        urgency: editedTask.urgency,
-        category: editedTask.category,
-        // Asegúrate de que la propiedad datetime esté en el formato correcto para tu API
-        datetime: editedTask.datetime, // Reemplaza 'formattedDate' con el valor correcto
+        task: {
+          title: editedTask.title,
+          description: editedTask.description,
+          urgency: editedTask.urgency,
+          category: editedTask.category,
+          datetime: formatDate(editedTask.datetime)
+        }
       });
-
+      
       if (response.status === 200) {
         console.log('Tarea actualizada con éxito');
         // Realiza cualquier otra acción necesaria después de actualizar la tarea.

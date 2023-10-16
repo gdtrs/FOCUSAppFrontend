@@ -9,26 +9,71 @@ import {
   ListItem,
   ListItemText,
   ListItemAvatar,
-  Divider
+  ListItemIcon,
+  Divider,
+  Button,
+  ListItemSecondaryAction,
+  IconButton,
+  Tooltip,
+  Snackbar,
+  Alert
 } from '@mui/material';
 import { Assignment as AssignmentIcon } from '@mui/icons-material';
 import { ThemeProvider } from '@mui/material/styles';
 import { themeOptionDark } from './Welcome';
+import HabitDialog from '../HabitDialog';
+import EditTaskDialog from '../EditTaskDialog';
+import EditIcon from '@mui/icons-material/Edit';
+import ArrowBackIosRounded from '@mui/icons-material/ArrowBackIosRounded';
+import DeleteIcon from '@mui/icons-material/Delete';
+import axios from 'axios';
+import { useAuth } from '../../context/AuthContext';
 
-// Supongamos que tienes un array de tareas (aquí se usa un estado local para simplificar)
-const mockTasks = [
-  { id: 1, title: 'Darle de comer a los perros', description: 'Descripción 1' },
-  { id: 2, title: 'Ir a sacar la basura el martes', description: 'Descripción 2' },
-  // Agrega más tareas aquí
-];
+const formatDate = (isoDateString) => {
+  const date = new Date(isoDateString)
+
+  const day = date.getDate() + 1
+  const month = [
+    "enero", "febrero", "marzo", "abril", "mayo", "junio",
+    "julio", "agosto", "septiembre", "noviembre", "diciembre"
+  ][date.getMonth()]
+  const year = date.getFullYear()
+  const hours = (date.getHours() % 12).toString().padStart(2, "0")
+  const minutes = date.getMinutes().toString().padStart(2, "0")
+
+  const formatted = `${day} de ${month} de ${year} a las ${hours}:${minutes}`
+
+  return formatted
+}
+
 
 export default function Habits() {
+
+  const auth = useAuth();
+
   const [habits, setHabits] = useState([]);
 
   useEffect(() => {
-    // Simulación de carga de tareas desde la base de datos
-    setHabits(mockTasks);
-  }, []);
+    // Llama a la API para obtener citas pendientes cuando el componente se monta
+    const fetchHabits = async () => {
+      try {
+        const response = await axios.post(
+          'http://localhost:8000/habits_service/get_user_habits',
+          { firebaseAuthenticationId: auth.user.uid }
+        );
+
+        if (response.status === 200) {
+          setHabits(response.data);
+        } else {
+          // Manejar errores si es necesario
+        }
+      } catch (error) {
+        console.error('Error al obtener tareas:', error);
+      }
+    };
+
+    fetchHabits();
+  }, [auth.user.uid]);
 
   return (
     <ThemeProvider theme={themeOptionDark}>
@@ -62,23 +107,56 @@ export default function Habits() {
             </Typography>
 
             {/* Aquí comienza la lista de tareas */}
-            <Paper sx={{ padding: 2, mt: 5 }}>
-              <Typography variant="h5" gutterBottom>
-                Agrega un hábito!
-              </Typography>
-
+            <Paper
+              elevation={6}
+              sx={{
+                width: '750px',
+                padding: 2,
+                mt: 5,
+                backgroundImage: 'url(/backgrounddarkpurple.png)',
+                backgroundRepeat: 'no-repeat',
+                backgroundSize: 'cover',
+                backgroundPosition: 'center'
+              }}>
+              <HabitDialog/>
               <List>
-                {habits.map((habits, index) => (
-                  <React.Fragment key={habits.id}>
-                    <ListItem>
-                      <ListItemAvatar>
-                        <Avatar>
-                          <AssignmentIcon />
-                        </Avatar>
-                      </ListItemAvatar>
-                      <ListItemText primary={habits.title} secondary={habits.description} />
+                {habits.map((habit) => (
+                  <React.Fragment key={habit.habitId}>
+                    <ListItem divider>
+                      <ListItemIcon>
+                        <AssignmentIcon />
+                      </ListItemIcon>
+                      <ListItemText
+                        primary="Titulo"
+                        secondary={habit.title}
+                        primaryTypographyProps={{ variant: 'subtitle1' }}
+                        secondaryTypographyProps={{ variant: 'body2' }}
+                      />
+                      <ListItemText
+                        primary="Descripción"
+                        secondary={habit.description}
+                        primaryTypographyProps={{ variant: 'subtitle1' }}
+                        secondaryTypographyProps={{ variant: 'body2' }}
+                      />
+                      <ListItemText
+                        primary="Fecha y Hora"
+                        secondary={formatDate(habit.time)}
+                        primaryTypographyProps={{ variant: 'subtitle1' }}
+                        secondaryTypographyProps={{ variant: 'body2' }}
+                      />
+                      <ListItemSecondaryAction>
+                        <Tooltip title='Editar'>
+                          <IconButton  /*</Tooltip>onClick={() => handleEditClick(habit)}*/ edge="end" aria-label="Editar">
+                            <EditIcon />
+                          </IconButton>
+                        </Tooltip>
+                        <Tooltip title='Borrar'>
+                          <IconButton /*onClick={() => handleDeleteTask(habit.taskId)} */ sx={{ml: 2}} edge="end" aria-label="Eliminar">
+                            <DeleteIcon />
+                          </IconButton>
+                        </Tooltip>
+                      </ListItemSecondaryAction>
                     </ListItem>
-                    {index < habits.length - 1 && <Divider variant="inset" />} {/* Agrega un Divider entre ListItem, excepto el último */}
                   </React.Fragment>
                 ))}
               </List>
