@@ -60,7 +60,7 @@ export default function GeneralInfo() {
     useEffect(() => {
       const checkUserDataExists = async (e) => {
         try {
-          // Obtén el firebaseAuthenticationId del usuario actual (supongo que está en auth.user.uid)
+          // Obtén el firebaseAuthenticationId del usuario actual
           const firebaseAuthenticationId = auth.user.uid;
     
           const response = await axios.get(
@@ -70,6 +70,7 @@ export default function GeneralInfo() {
           if (response.status === 200) {
             // Comprueba si el usuario existe en la respuesta de la API
             if (response.data && response.data.nickname) {
+              const userNickname = response.data.nickname
               setUserDataExists(true);
             }
           }
@@ -253,3 +254,4 @@ export default function GeneralInfo() {
     </React.Fragment>
   );
 } 
+

@@ -8,10 +8,8 @@ import { useNavigate } from "react-router-dom";
 //MATERIAL UI COMPONENTS
 import { 
   ThemeProvider,
-  styled 
 } from '@mui/material/styles';
 import {
-  Fab,
   Menu,
   Avatar,
   Button,
@@ -27,25 +25,14 @@ import {
   Grid
 } from '@mui/material';
 //MATERIAL UI ICONS
-import HomeIcon from '@mui/icons-material/Home';
-import EmailIcon from '@mui/icons-material/Email';
-import InsertEmoticonIcon from '@mui/icons-material/InsertEmoticon';
-import WeekendIcon from '@mui/icons-material/Weekend';
-import AddIcon from '@mui/icons-material/Add';
-import AssignmentIcon from '@mui/icons-material/Assignment';
+import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
 import { AccountCircle, Settings, ExitToApp } from '@mui/icons-material';
 //Componentes
 import DailyAdvice from '../DailyAdvice';
 import Slider from '../Task&HabitSlide';
-
-const StyledFab = styled(Fab)({
-  position: 'absolute',
-  zIndex: 1,
-  top: -30,
-  left: 0,
-  right: 0,
-  margin: '0 auto',
-});
+import SpeedDialComponent from '../SpeedDial';
+import ChamberOfReflection from '../ChamberOfReflectionComponent';
+//Componente estilizado
 
 const pages = ['Blog'];
 
@@ -106,7 +93,7 @@ export default function StickyFooter() {
           display: 'flex',
           flexDirection: 'column',
           minHeight: '100vh',
-          backgroundImage: 'url(/backgrounddarkpurple.png)',
+          backgroundImage: 'url(/backgroundlightpurple.png)',
           backgroundRepeat: 'no-repeat',
           backgroundColor: (t) =>
             t.palette.mode === 'dark' ? t.palette.grey[50] : t.palette.grey[900],
@@ -127,7 +114,7 @@ export default function StickyFooter() {
           }}>
           <Container maxWidth="xl">
             <Toolbar disableGutters>
-              <HomeIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+              <HomeRoundedIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1, fontSize: 30 }} />
               <Typography
                 variant="h6"
                 noWrap
@@ -136,7 +123,6 @@ export default function StickyFooter() {
                 sx={{
                   mr: 2,
                   display: { xs: 'none', md: 'flex' },
-                  fontFamily: 'roboto',
                   fontWeight: 700,
                   letterSpacing: '.0rem',
                   color: 'inherit',
@@ -155,7 +141,7 @@ export default function StickyFooter() {
                   onClick={handleOpenNavMenu}
                   color="inherit"
                 >
-                  <HomeIcon />
+                  <HomeRoundedIcon />
                 </IconButton>
                 <Menu
                   id="menu-appbar"
@@ -214,7 +200,7 @@ export default function StickyFooter() {
 
               <Box sx={{ flexGrow: 0 }}>
                 <Tooltip title="Open settings">
-                  <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                  <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }} className='animate__animated animate__zoomIn'>
                     <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
                   </IconButton>
                 </Tooltip>
@@ -248,16 +234,33 @@ export default function StickyFooter() {
           </Container>
         </AppBar>
 
-        <Grid container spacing={6}>
+        <Grid container>
           <Grid item xs={12} md={6}>
-            <Box sx={{
-              mt: 5,
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center'
-            }}>
-              <DailyAdvice/>
-            </Box>
+            <Grid item xs>
+              <Box sx={{
+                mt: 5,
+                mr: 3,
+                ml: 3,
+                mb: 2,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}>
+                <DailyAdvice/>
+              </Box>
+            </Grid>
+            <Grid item xs>
+              <Box  sx={{
+                mt: 5,
+                mr: 3,
+                ml: 3,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}>
+                <ChamberOfReflection/>
+              </Box>
+            </Grid>
           </Grid>
           <Grid item xs={12} md={6}>
             <Box sx={{
@@ -285,13 +288,15 @@ export default function StickyFooter() {
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             }}>
-        <Toolbar>
-          <StyledFab color="secondary" aria-label="add">
-            <AddIcon />
-          </StyledFab>
-          <Box sx={{ flexGrow: 1 }} />
-        </Toolbar>
-      </AppBar>
+
+          <Toolbar>
+
+            <Box sx={{ flexGrow: 1 }} />
+            <SpeedDialComponent/>
+            
+          </Toolbar>
+
+        </AppBar>
       </Box>
     </ThemeProvider>
   );
