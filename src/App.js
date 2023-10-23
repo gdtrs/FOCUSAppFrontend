@@ -13,6 +13,7 @@ import Habits from './components/view/Habits';
 import Appointments from './components/view/Appointments';
 import Chamber from './components/view/Chamber';
 import { esES } from '@mui/x-date-pickers/locales';
+import Information from './components/view/Information';
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
                 <Route path='/user-habits' element={ <Habits/> } />
                 <Route path='/user-appointments' element={ <Appointments/> } />
                 <Route path='/chamber' element={ <Chamber/> } />
+                <Route path='/information' element={ <Information/> } />
               </Routes>
           </div>
         </BrowserRouter>
