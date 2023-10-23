@@ -23,11 +23,13 @@ import { ThemeProvider } from '@mui/material/styles';
 import { themeOptionDark } from './Welcome';
 import HabitDialog from '../HabitDialog';
 import EditTaskDialog from '../EditTaskDialog';
+import AllInclusiveIcon from '@mui/icons-material/AllInclusive';
 import EditIcon from '@mui/icons-material/Edit';
 import ArrowBackIosRounded from '@mui/icons-material/ArrowBackIosRounded';
 import DeleteIcon from '@mui/icons-material/Delete';
 import axios from 'axios';
 import { useAuth } from '../../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 const formatDate = (isoDateString) => {
   const date = new Date(isoDateString)
@@ -50,6 +52,7 @@ const formatDate = (isoDateString) => {
 export default function Habits() {
 
   const auth = useAuth();
+  const navigate = useNavigate();
 
   const [habits, setHabits] = useState([]);
 
@@ -75,6 +78,10 @@ export default function Habits() {
     fetchHabits();
   }, [auth.user.uid]);
 
+  const handleBack = async () => {
+    navigate('/home-screen')
+  }
+
   return (
     <ThemeProvider theme={themeOptionDark}>
       <Box
@@ -99,15 +106,29 @@ export default function Habits() {
               alignItems: 'center',
             }}
           >
-            <Avatar sx={{ m: 1, bgcolor: 'secondary.main', width: 70, height: 70 }}>
+          <Tooltip title='Volver'>
+            <ArrowBackIosRounded
+                style={{
+                  position: 'absolute',
+                  top: 20,
+                  left: 20,
+                  color: 'white',
+                  cursor: 'pointer',
+                }}
+                fontSize="large"
+                onClick={handleBack}
+            />
+            </Tooltip>
+            <Avatar className='animate__animated animate__zoomIn' sx={{ m: 1, bgcolor: 'secondary.main', width: 70, height: 70 }}>
               <AssignmentIcon sx={{ width: 60, height: 60 }} />
             </Avatar>
-            <Typography component="h1" variant="h2" sx={{ color: '#fff' }}>
+            <Typography className='animate__animated animate__zoomIn' component="h1" variant="h2" sx={{ color: '#fff' }}>
               HÁBITOS
             </Typography>
 
             {/* Aquí comienza la lista de tareas */}
             <Paper
+              className='animate__animated animate__zoomIn'
               elevation={6}
               sx={{
                 width: '750px',
@@ -124,7 +145,7 @@ export default function Habits() {
                   <React.Fragment key={habit.habitId}>
                     <ListItem divider>
                       <ListItemIcon>
-                        <AssignmentIcon />
+                        <AllInclusiveIcon />
                       </ListItemIcon>
                       <ListItemText
                         primary="Titulo"

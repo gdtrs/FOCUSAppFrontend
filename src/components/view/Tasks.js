@@ -160,13 +160,14 @@ export default function Tasks() {
                 onClick={handleBack}
              />
             </Tooltip>
-            <Avatar sx={{ m: 1, bgcolor: 'secondary.main', width: 70, height: 70 }}>
+            <Avatar className='animate__animated animate__zoomIn' sx={{ m: 1, bgcolor: 'secondary.main', width: 70, height: 70 }}>
               <AssignmentIcon sx={{ width: 60, height: 60 }} />
             </Avatar>
-            <Typography component="h1" variant="h2" sx={{ color: '#fff' }}>
+            <Typography className='animate__animated animate__zoomIn' component="h1" variant="h2" sx={{ color: '#fff' }}>
               TAREAS 
             </Typography>
             <Paper
+              className='animate__animated animate__zoomIn'
               elevation={6}
               sx={{
                 width: '750px',

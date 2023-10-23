@@ -19,6 +19,7 @@ import List from '@mui/material/List';
 import ListItem  from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemIcon from '@mui/material/ListItemIcon';
+import AllInclusiveIcon from '@mui/icons-material/AllInclusive';
 import { useAuth } from '../context/AuthContext';
 import axios from 'axios';
 import Habits from './view/Habits';
@@ -155,7 +156,7 @@ const Slider = () => {
           </Typography>
           <List>
             {appointments.map((appointment) => (
-              <React.Fragment key={appointment.appointmentId}>
+              <React.Fragment key={appointment.appointmentId} sx={{}}>
                 <ListItem divider>
                   <ListItemIcon>
                     <EventNoteIcon />
@@ -206,7 +207,7 @@ const Slider = () => {
                   <React.Fragment key={habit.habitId}>
                     <ListItem divider>
                       <ListItemIcon>
-                        <AssignmentIcon />
+                        <AllInclusiveIcon />
                       </ListItemIcon>
                       <ListItemText
                         primary="Titulo"
