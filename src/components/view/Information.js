@@ -38,7 +38,7 @@ export default function Information() {
           display: 'flex',
           flexDirection: 'column',
           minHeight: '100vh',
-          backgroundImage: 'url(/backgroundhabits.png)',
+          backgroundImage: 'url(/backgroundhomescreen.png)',
           backgroundRepeat: 'no-repeat',
           backgroundColor: (t) =>
             t.palette.mode === 'dark' ? t.palette.grey[50] : t.palette.grey[900],
@@ -76,618 +76,764 @@ export default function Information() {
               INFORMACIÓN
             </Typography>
           </Box>
+          </Container>
           <Box>
 
-          <Grid container spacing={2}>
-          <Grid item xs={12} sm={6} md={3}>
-            {/* Primer slide */}
-            <Swiper
-              effect={'cards'}
-              grabCursor={true}
-              modules={[EffectCards]}
-              className="mySwiper"
-            >
-              <SwiperSlide>
-                <Card
-                  className='animate__animated animate__zoomIn animate__faster animate__delay-0.5s'
-                  sx={{
-                    borderRadius: 5,
-                    mb: 8,
-                    mr: 3,
-                    ml: 3,
-                    height: 500,
-                    background: 'linear-gradient(360deg, #772fa8, #c471ed)',
-                    '@media (max-width: 481px)': {
-                      height: 425,
-                      mb: 8,
-                    },
-                    '@media (max-width: 899px)': {
-                      height: 400,
-                      mb: 8,
-                    },
-                  }}
+            <Grid container spacing={2}>
+              <Grid item xs={12} sm={6} md={4}>
+                {/* Primer slide */}
+                <Swiper
+                  effect={'cards'}
+                  grabCursor={true}
+                  modules={[EffectCards]}
+                  className="mySwiper"
                 >
-                  ¿Qué es el TDAH?
-                </Card>
-              </SwiperSlide>
+                  <SwiperSlide>
+                    <Card
+                      className='animate__animated animate__zoomIn animate__faster animate__delay-0.5s'
+                      sx={{
+                        fontfamily: "roboto",
+                        fontWeight: "bold",
+                        fontSize: 40,
+                        borderRadius: 5,
+                        display: 'flex',
+                        padding: 2.5,
+                        alignItems: 'center',
+                        textAlign: "center",
+                        mb: 8,
+                        mr: 3,
+                        ml: 3,
+                        height: 300,
+                        background: 'linear-gradient(360deg, #772fa8, #c471ed)',
+                        '@media (max-width: 481px)': {
+                          height: 425,
+                          mb: 8,
+                        },
+                        '@media (max-width: 899px)': {
+                          height: 400,
+                          mb: 8,
+                        },
+                      }}
+                    >
+                      ¿Qué es el TDAH?
+                    </Card>
+                  </SwiperSlide>
 
-              <SwiperSlide>
-                <Card
-                  className='animate__animated animate__zoomIn animate__faster animate__delay-0.5s'
-                  sx={{
-                    borderRadius: 5,
-                    mb: 8,
-                    mr: 3,
-                    ml: 3,
-                    height: 500,
-                    background: 'linear-gradient(360deg, #772fa8, #c471ed)',
-                    '@media (max-width: 481px)': {
-                      height: 425,
-                      mb: 8,
-                    },
-                    '@media (max-width: 899px)': {
-                      height: 400,
-                      mb: 8,
-                    },
-                  }}
+                  <SwiperSlide>
+                    <Card
+                      className='animate__animated animate__zoomIn animate__faster animate__delay-0.5s'
+                      sx={{
+                        fontfamily: "roboto",
+                        fontWeight: "bold",
+                        fontSize: 20,
+                        borderRadius: 5,
+                        display: 'flex',
+                        padding: 2.5,
+                        alignItems: 'center',
+                        textAlign: "center",
+                        mb: 8,
+                        mr: 3,
+                        ml: 3,
+                        height: 300,
+                        background: 'linear-gradient(360deg, #772fa8, #c471ed)',
+                        '@media (max-width: 481px)': {
+                          height: 425,
+                          mb: 8,
+                        },
+                        '@media (max-width: 899px)': {
+                          height: 400,
+                          mb: 8,
+                        },
+                      }}
+                    >
+                      Es un trastorno mental que comprende una combinación de problemas persistentes,
+                      como dificultad para prestar atención, hiperactividad y conducta impulsiva.
+                    </Card>
+                  </SwiperSlide>
+                </Swiper>
+              </Grid>
+              {/* Primer slide */}
+
+              {/* Segundo slide */}
+              <Grid item xs={12} sm={6} md={4}>
+                <Swiper
+                  effect={'cards'}
+                  grabCursor={true}
+                  modules={[EffectCards]}
+                  className="mySwiper"
                 >
-                  Es un trastorno mental que comprende una combinación de problemas persistentes,
-                  como dificultad para prestar atención, hiperactividad y conducta impulsiva.
-                </Card>
-              </SwiperSlide>
-            </Swiper>
-            </Grid>
-            {/* Primer slide */}
+                  <SwiperSlide>
+                    <Card
+                      className='animate__animated animate__zoomIn animate__faster animate__delay-0.5s'
+                      sx={{
+                        fontfamily: "roboto",
+                        fontWeight: "bold",
+                        fontSize: 40,
+                        borderRadius: 5,
+                        display: 'flex',
+                        padding: 2.5,
+                        alignItems: 'center',
+                        textAlign: "center",
+                        mb: 8,
+                        mr: 3,
+                        ml: 3,
+                        height: 300,
+                        background: 'linear-gradient(360deg, #772fa8, #c471ed)',
+                        '@media (max-width: 481px)': {
+                          height: 425,
+                          mb: 8,
+                        },
+                        '@media (max-width: 899px)': {
+                          height: 400,
+                          mb: 8,
+                        },
+                      }}
+                    >
+                      ¿Cuáles son los síntomas del TDAH?
+                    </Card>
+                  </SwiperSlide>
 
-            {/* Segundo slide */}
-            <Grid item xs={12} sm={6} md={3}>
-            <Swiper
-              effect={'cards'}
-              grabCursor={true}
-              modules={[EffectCards]}
-              className="mySwiper"
-            >
-              <SwiperSlide>
-                <Card
-                  className='animate__animated animate__zoomIn animate__faster animate__delay-0.5s'
-                  sx={{
-                    borderRadius: 5,
-                    mb: 8,
-                    mr: 3,
-                    ml: 3,
-                    height: 500,
-                    background: 'linear-gradient(360deg, #772fa8, #c471ed)',
-                    '@media (max-width: 481px)': {
-                      height: 425,
-                      mb: 8,
-                    },
-                    '@media (max-width: 899px)': {
-                      height: 400,
-                      mb: 8,
-                    },
-                  }}
+                  <SwiperSlide>
+                    <Card
+                      className='animate__animated animate__zoomIn animate__faster animate__delay-0.5s'
+                      sx={{
+                        fontfamily: "roboto",
+                        fontWeight: "bold",
+                        fontSize: 20,
+                        borderRadius: 5,
+                        display: 'flex',
+                        padding: 2.5,
+                        alignItems: 'center',
+                        textAlign: "center",
+                        mb: 8,
+                        mr: 3,
+                        ml: 3,
+                        height: 300,
+                        background: 'linear-gradient(360deg, #772fa8, #c471ed)',
+                        '@media (max-width: 481px)': {
+                          height: 425,
+                          mb: 8,
+                        },
+                        '@media (max-width: 899px)': {
+                          height: 400,
+                          mb: 8,
+                        },
+                      }}
+                    >
+                      Los síntomas principales del TDAH son la inatención,
+                      la hiperactividad y la impulsividad.
+                    </Card>
+                  </SwiperSlide>
+                </Swiper>
+              </Grid>
+              {/* Segundo slide */}
+
+              {/* Tercer slide */}
+              <Grid item xs={12} sm={6} md={4}>
+                <Swiper
+                  effect={'cards'}
+                  grabCursor={true}
+                  modules={[EffectCards]}
+                  className="mySwiper"
                 >
-                  ¿Cuáles son los síntomas del TDAH?
-                </Card>
-              </SwiperSlide>
+                  <SwiperSlide>
+                    <Card
+                      className='animate__animated animate__zoomIn animate__faster animate__delay-0.5s'
+                      sx={{
+                        fontfamily: "roboto",
+                        fontWeight: "bold",
+                        fontSize: 40,
+                        borderRadius: 5,
+                        display: 'flex',
+                        padding: 2.5,
+                        alignItems: 'center',
+                        textAlign: "center",
+                        mb: 8,
+                        mr: 3,
+                        ml: 3,
+                        height: 300,
+                        background: 'linear-gradient(360deg, #772fa8, #c471ed)',
+                        '@media (max-width: 481px)': {
+                          height: 425,
+                          mb: 8,
+                        },
+                        '@media (max-width: 899px)': {
+                          height: 400,
+                          mb: 8,
+                        },
+                      }}
+                    >
+                      ¿Cuál es la causa del TDAH?
+                    </Card>
+                  </SwiperSlide>
 
-              <SwiperSlide>
-                <Card
-                  className='animate__animated animate__zoomIn animate__faster animate__delay-0.5s'
-                  sx={{
-                    borderRadius: 5,
-                    mb: 8,
-                    mr: 3,
-                    ml: 3,
-                    height: 500,
-                    background: 'linear-gradient(360deg, #772fa8, #c471ed)',
-                    '@media (max-width: 481px)': {
-                      height: 425,
-                      mb: 8,
-                    },
-                    '@media (max-width: 899px)': {
-                      height: 400,
-                      mb: 8,
-                    },
-                  }}
-                >
-                  Los síntomas principales del TDAH son la inatención,
-                  la hiperactividad y la impulsividad.
-                </Card>
-              </SwiperSlide>
-            </Swiper>
-            </Grid>
-            {/* Segundo slide */}
-
-            {/* Tercer slide */}
-            <Grid item xs={12} sm={6} md={3}>
-            <Swiper
-              effect={'cards'}
-              grabCursor={true}
-              modules={[EffectCards]}
-              className="mySwiper"
-            >
-              <SwiperSlide>
-                <Card
-                  className='animate__animated animate__zoomIn animate__faster animate__delay-0.5s'
-                  sx={{
-                    borderRadius: 5,
-                    mb: 8,
-                    mr: 3,
-                    ml: 3,
-                    height: 500,
-                    background: 'linear-gradient(360deg, #772fa8, #c471ed)',
-                    '@media (max-width: 481px)': {
-                      height: 425,
-                      mb: 8,
-                    },
-                    '@media (max-width: 899px)': {
-                      height: 400,
-                      mb: 8,
-                    },
-                  }}
-                >
-                  ¿Cuál es la causa del TDAH?
-                </Card>
-              </SwiperSlide>
-
-              <SwiperSlide>
-                <Card
-                  className='animate__animated animate__zoomIn animate__faster animate__delay-0.5s'
-                  sx={{
-                    borderRadius: 5,
-                    mb: 8,
-                    mr: 3,
-                    ml: 3,
-                    height: 500,
-                    background: 'linear-gradient(360deg, #772fa8, #c471ed)',
-                    '@media (max-width: 481px)': {
-                      height: 425,
-                      mb: 8,
-                    },
-                    '@media (max-width: 899px)': {
-                      height: 400,
-                      mb: 8,
-                    },
-                  }}
-                >
-                  La causa exacta del TDAH aún no se conoce,
-                  pero se cree que es el resultado de una combinación de factores genéticos,
-                  neurobiológicos y ambientales .
-                </Card>
-              </SwiperSlide>
-            </Swiper>
-            </Grid>
-            {/* Tercer slide */}
+                  <SwiperSlide>
+                    <Card
+                      className='animate__animated animate__zoomIn animate__faster animate__delay-0.5s'
+                      sx={{
+                        fontfamily: "roboto",
+                        fontWeight: "bold",
+                        fontSize: 20,
+                        borderRadius: 5,
+                        display: 'flex',
+                        padding: 2.5,
+                        alignItems: 'center',
+                        textAlign: "center",
+                        mb: 8,
+                        mr: 3,
+                        ml: 3,
+                        height: 300,
+                        background: 'linear-gradient(360deg, #772fa8, #c471ed)',
+                        '@media (max-width: 481px)': {
+                          height: 425,
+                          mb: 8,
+                        },
+                        '@media (max-width: 899px)': {
+                          height: 400,
+                          mb: 8,
+                        },
+                      }}
+                    >
+                      La causa exacta del TDAH aún no se conoce,
+                      pero se cree que es el resultado de una combinación de factores genéticos,
+                      neurobiológicos y ambientales .
+                    </Card>
+                  </SwiperSlide>
+                </Swiper>
+              </Grid>
+              {/* Tercer slide */}
 
 
-            {/* Cuarto slide */}
-            <Swiper
-              effect={'cards'}
-              grabCursor={true}
-              modules={[EffectCards]}
-              className="mySwiper"
-            >
-              <SwiperSlide>
-                <Card
-                  className='animate__animated animate__zoomIn animate__faster animate__delay-0.5s'
-                  sx={{
-                    borderRadius: 5,
-                    mb: 8,
-                    mr: 3,
-                    ml: 3,
-                    height: 500,
-                    background: 'linear-gradient(360deg, #772fa8, #c471ed)',
-                    '@media (max-width: 481px)': {
-                      height: 425,
-                      mb: 8,
-                    },
-                    '@media (max-width: 899px)': {
-                      height: 400,
-                      mb: 8,
-                    },
-                  }}
-                >
-                  ¿El TDAH sólo afecta a los niños?
-                </Card>
-              </SwiperSlide>
+              {/* Cuarto slide */}
+              <Grid item xs={12} sm={6} md={4}>
+              <Swiper
+                effect={'cards'}
+                grabCursor={true}
+                modules={[EffectCards]}
+                className="mySwiper"
+              >
+                <SwiperSlide>
+                  <Card
+                    className='animate__animated animate__zoomIn animate__faster animate__delay-0.5s'
+                    sx={{
+                      fontfamily: "roboto",
+                        fontWeight: "bold",
+                        fontSize: 40,
+                        borderRadius: 5,
+                        display: 'flex',
+                        padding: 2.5,
+                        alignItems: 'center',
+                        textAlign: "center",
+                        mb: 8,
+                        mr: 3,
+                        ml: 3,
+                        height: 300,
+                      background: 'linear-gradient(360deg, #772fa8, #c471ed)',
+                      '@media (max-width: 481px)': {
+                        height: 425,
+                        mb: 8,
+                      },
+                      '@media (max-width: 899px)': {
+                        height: 400,
+                        mb: 8,
+                      },
+                    }}
+                  >
+                    ¿El TDAH sólo afecta a los niños?
+                  </Card>
+                </SwiperSlide>
 
-              <SwiperSlide>
-                <Card
-                  className='animate__animated animate__zoomIn animate__faster animate__delay-0.5s'
-                  sx={{
-                    borderRadius: 5,
-                    mb: 8,
-                    mr: 3,
-                    ml: 3,
-                    height: 500,
-                    background: 'linear-gradient(360deg, #772fa8, #c471ed)',
-                    '@media (max-width: 481px)': {
-                      height: 425,
-                      mb: 8,
-                    },
-                    '@media (max-width: 899px)': {
-                      height: 400,
-                      mb: 8,
-                    },
-                  }}
-                >
-                  No, el TDAH puede afectar tanto a niños como a adultos.
-                  Aunque los síntomas pueden cambiar con la edad,
-                  el trastorno puede persistir en la vida adulta.
-                </Card>
-              </SwiperSlide>
-            </Swiper>
-            {/* Cuarto slide */}
+                <SwiperSlide>
+                  <Card
+                    className='animate__animated animate__zoomIn animate__faster animate__delay-0.5s'
+                    sx={{
+                      fontfamily: "roboto",
+                        fontWeight: "bold",
+                        fontSize: 20,
+                        borderRadius: 5,
+                        display: 'flex',
+                        padding: 2.5,
+                        alignItems: 'center',
+                        textAlign: "center",
+                        mb: 8,
+                        mr: 3,
+                        ml: 3,
+                        height: 300,
+                      background: 'linear-gradient(360deg, #772fa8, #c471ed)',
+                      '@media (max-width: 481px)': {
+                        height: 425,
+                        mb: 8,
+                      },
+                      '@media (max-width: 899px)': {
+                        height: 400,
+                        mb: 8,
+                      },
+                    }}
+                  >
+                    No, el TDAH puede afectar tanto a niños como a adultos.
+                    Aunque los síntomas pueden cambiar con la edad,
+                    el trastorno puede persistir en la vida adulta.
+                  </Card>
+                </SwiperSlide>
+              </Swiper>
+              </Grid>
+              {/* Cuarto slide */}
 
-            {/* Quinto slide */}
-            <Swiper
-              effect={'cards'}
-              grabCursor={true}
-              modules={[EffectCards]}
-              className="mySwiper"
-            >
-              <SwiperSlide>
-                <Card
-                  className='animate__animated animate__zoomIn animate__faster animate__delay-0.5s'
-                  sx={{
-                    borderRadius: 5,
-                    mb: 8,
-                    mr: 3,
-                    ml: 3,
-                    height: 500,
-                    background: 'linear-gradient(360deg, #772fa8, #c471ed)',
-                    '@media (max-width: 481px)': {
-                      height: 425,
+              {/* Quinto slide */}
+              <Grid item xs={12} sm={6} md={4}>
+              <Swiper
+                effect={'cards'}
+                grabCursor={true}
+                modules={[EffectCards]}
+                className="mySwiper"
+              >
+                <SwiperSlide>
+                  <Card
+                    className='animate__animated animate__zoomIn animate__faster animate__delay-0.5s'
+                    sx={{
+                      fontfamily: "roboto",
+                      fontWeight: "bold",
+                      fontSize: 40,
+                      borderRadius: 5,
+                      display: 'flex',
+                      padding: 2.5,
+                      alignItems: 'center',
+                      textAlign: "center",
                       mb: 8,
-                    },
-                    '@media (max-width: 899px)': {
-                      height: 400,
-                      mb: 8,
-                    },
-                  }}
-                >
-                  ¿Cómo se diagnostica el TDAH?
-                </Card>
-              </SwiperSlide>
+                      mr: 3,
+                      ml: 3,
+                      height: 300,
+                      background: 'linear-gradient(360deg, #772fa8, #c471ed)',
+                      '@media (max-width: 481px)': {
+                        height: 425,
+                        mb: 8,
+                      },
+                      '@media (max-width: 899px)': {
+                        height: 400,
+                        mb: 8,
+                      },
+                    }}
+                  >
+                    ¿Cómo se diagnostica el TDAH?
+                  </Card>
+                </SwiperSlide>
 
-              <SwiperSlide>
-                <Card
-                  className='animate__animated animate__zoomIn animate__faster animate__delay-0.5s'
-                  sx={{
-                    borderRadius: 5,
-                    mb: 8,
-                    mr: 3,
-                    ml: 3,
-                    height: 500,
-                    background: 'linear-gradient(360deg, #772fa8, #c471ed)',
-                    '@media (max-width: 481px)': {
-                      height: 425,
+                <SwiperSlide>
+                  <Card
+                    className='animate__animated animate__zoomIn animate__faster animate__delay-0.5s'
+                    sx={{
+                      fontfamily: "roboto",
+                      fontWeight: "bold",
+                      fontSize: 20,
+                      borderRadius: 5,
+                      display: 'flex',
+                      padding: 2.5,
+                      alignItems: 'center',
+                      textAlign: "center",
                       mb: 8,
-                    },
-                    '@media (max-width: 899px)': {
-                      height: 400,
-                      mb: 8,
-                    },
-                  }}
-                >
-                 El diagnóstico del TDAH se basa en la evaluación clínica de los síntomas y 
-                 el descarte de otras posibles causas. 
-                 No existe una prueba única para diagnosticar el TDAH. 
-                </Card>
-              </SwiperSlide>
-            </Swiper>
-            {/* Quinto slide */}
+                      mr: 3,
+                      ml: 3,
+                      height: 300,
+                      background: 'linear-gradient(360deg, #772fa8, #c471ed)',
+                      '@media (max-width: 481px)': {
+                        height: 425,
+                        mb: 8,
+                      },
+                      '@media (max-width: 899px)': {
+                        height: 400,
+                        mb: 8,
+                      },
+                    }}
+                  >
+                    El diagnóstico del TDAH se basa en la evaluación clínica de los síntomas y
+                    el descarte de otras posibles causas.
+                    No existe una prueba única para diagnosticar el TDAH.
+                  </Card>
+                </SwiperSlide>
+              </Swiper>
+              </Grid>
+              {/* Quinto slide */}
 
-            {/* Sexto slide */}
-            <Swiper
-              effect={'cards'}
-              grabCursor={true}
-              modules={[EffectCards]}
-              className="mySwiper"
-            >
-              <SwiperSlide>
-                <Card
-                  className='animate__animated animate__zoomIn animate__faster animate__delay-0.5s'
-                  sx={{
-                    borderRadius: 5,
-                    mb: 8,
-                    mr: 3,
-                    ml: 3,
-                    height: 500,
-                    background: 'linear-gradient(360deg, #772fa8, #c471ed)',
-                    '@media (max-width: 481px)': {
-                      height: 425,
+              {/* Sexto slide */}
+              <Grid item xs={12} sm={6} md={4}>
+              <Swiper
+                effect={'cards'}
+                grabCursor={true}
+                modules={[EffectCards]}
+                className="mySwiper"
+              >
+                <SwiperSlide>
+                  <Card
+                    className='animate__animated animate__zoomIn animate__faster animate__delay-0.5s'
+                    sx={{
+                      fontfamily: "roboto",
+                      fontWeight: "bold",
+                      fontSize: 40,
+                      borderRadius: 5,
+                      display: 'flex',
+                      padding: 2.5,
+                      alignItems: 'center',
+                      textAlign: "center",
                       mb: 8,
-                    },
-                    '@media (max-width: 899px)': {
-                      height: 400,
-                      mb: 8,
-                    },
-                  }}
-                >
-                  ¿Cuál es el tratamiento para el TDAH?
-                </Card>
-              </SwiperSlide>
+                      mr: 3,
+                      ml: 3,
+                      height: 300,
+                      background: 'linear-gradient(360deg, #772fa8, #c471ed)',
+                      '@media (max-width: 481px)': {
+                        height: 425,
+                        mb: 8,
+                      },
+                      '@media (max-width: 899px)': {
+                        height: 400,
+                        mb: 8,
+                      },
+                    }}
+                  >
+                    ¿Cuál es el tratamiento para el TDAH?
+                  </Card>
+                </SwiperSlide>
 
-              <SwiperSlide>
-                <Card
-                  className='animate__animated animate__zoomIn animate__faster animate__delay-0.5s'
-                  sx={{
-                    borderRadius: 5,
-                    mb: 8,
-                    mr: 3,
-                    ml: 3,
-                    height: 500,
-                    background: 'linear-gradient(360deg, #772fa8, #c471ed)',
-                    '@media (max-width: 481px)': {
-                      height: 425,
+                <SwiperSlide>
+                  <Card
+                    className='animate__animated animate__zoomIn animate__faster animate__delay-0.5s'
+                    sx={{
+                      fontfamily: "roboto",
+                      fontWeight: "bold",
+                      fontSize: 20,
+                      borderRadius: 5,
+                      display: 'flex',
+                      padding: 2.5,
+                      alignItems: 'center',
+                      textAlign: "center",
                       mb: 8,
-                    },
-                    '@media (max-width: 899px)': {
-                      height: 400,
-                      mb: 8,
-                    },
-                  }}
-                >
-                El tratamiento del TDAH puede incluir terapia conductual, 
-                terapia cognitivo-conductual, medicación y apoyo educativo. 
-                El enfoque del tratamiento puede variar según las necesidades individuales.
+                      mr: 3,
+                      ml: 3,
+                      height: 300,
+                      background: 'linear-gradient(360deg, #772fa8, #c471ed)',
+                      '@media (max-width: 481px)': {
+                        height: 425,
+                        mb: 8,
+                      },
+                      '@media (max-width: 899px)': {
+                        height: 400,
+                        mb: 8,
+                      },
+                    }}
+                  >
+                    El tratamiento del TDAH puede incluir terapia conductual,
+                    terapia cognitivo-conductual, medicación y apoyo educativo.
+                    El enfoque del tratamiento puede variar según las necesidades individuales.
 
-                </Card>
-              </SwiperSlide>
-            </Swiper>
-            {/* Sexto slide */}
+                  </Card>
+                </SwiperSlide>
+              </Swiper>
+              </Grid>
+              {/* Sexto slide */}
 
-            {/* Sétimo slide */}
-            <Swiper
-              effect={'cards'}
-              grabCursor={true}
-              modules={[EffectCards]}
-              className="mySwiper"
-            >
-              <SwiperSlide>
-                <Card
-                  className='animate__animated animate__zoomIn animate__faster animate__delay-0.5s'
-                  sx={{
-                    borderRadius: 5,
-                    mb: 8,
-                    mr: 3,
-                    ml: 3,
-                    height: 500,
-                    background: 'linear-gradient(360deg, #772fa8, #c471ed)',
-                    '@media (max-width: 481px)': {
-                      height: 425,
+              {/* Sétimo slide */}
+              <Grid item xs={12} sm={6} md={4}>
+              <Swiper
+                effect={'cards'}
+                grabCursor={true}
+                modules={[EffectCards]}
+                className="mySwiper"
+              >
+                <SwiperSlide>
+                  <Card
+                    className='animate__animated animate__zoomIn animate__faster animate__delay-0.5s'
+                    sx={{
+                      fontfamily: "roboto",
+                      fontWeight: "bold",
+                      fontSize: 40,
+                      borderRadius: 5,
+                      display: 'flex',
+                      padding: 2.5,
+                      alignItems: 'center',
+                      textAlign: "center",
                       mb: 8,
-                    },
-                    '@media (max-width: 899px)': {
-                      height: 400,
-                      mb: 8,
-                    },
-                  }}
-                >
-                  ¿El TDAH se puede curar?
-                </Card>
-              </SwiperSlide>
+                      mr: 3,
+                      ml: 3,
+                      height: 300,
+                      background: 'linear-gradient(360deg, #772fa8, #c471ed)',
+                      '@media (max-width: 481px)': {
+                        height: 425,
+                        mb: 8,
+                      },
+                      '@media (max-width: 899px)': {
+                        height: 400,
+                        mb: 8,
+                      },
+                    }}
+                  >
+                    ¿El TDAH se puede curar?
+                  </Card>
+                </SwiperSlide>
 
-              <SwiperSlide>
-                <Card
-                  className='animate__animated animate__zoomIn animate__faster animate__delay-0.5s'
-                  sx={{
-                    borderRadius: 5,
-                    mb: 8,
-                    mr: 3,
-                    ml: 3,
-                    height: 500,
-                    background: 'linear-gradient(360deg, #772fa8, #c471ed)',
-                    '@media (max-width: 481px)': {
-                      height: 425,
-                      mb: 8,
-                    },
-                    '@media (max-width: 899px)': {
-                      height: 400,
-                      mb: 8,
-                    },
-                  }}
-                >
-               No hay una cura conocida para el TDAH, pero con el tratamiento adecuado y
-               el apoyo adecuado, las personas con TDAH pueden aprender a manejar sus síntomas y
-               llevar una vida plena y productiva.
-
-
-                </Card>
-              </SwiperSlide>
-            </Swiper>
-            {/* Sétimo slide */}
-
-            {/* Octavo slide */}
-            <Swiper
-              effect={'cards'}
-              grabCursor={true}
-              modules={[EffectCards]}
-              className="mySwiper"
-            >
-              <SwiperSlide>
-                <Card
-                  className='animate__animated animate__zoomIn animate__faster animate__delay-0.5s'
-                  sx={{
-                    borderRadius: 5,
-                    mb: 8,
-                    mr: 3,
-                    ml: 3,
-                    height: 500,
-                    background: 'linear-gradient(360deg, #772fa8, #c471ed)',
-                    '@media (max-width: 481px)': {
-                      height: 425,
-                      mb: 8,
-                    },
-                    '@media (max-width: 899px)': {
-                      height: 400,
-                      mb: 8,
-                    },
-                  }}
-                >
-                  ¿El TDAH se puede prevenir?
-                </Card>
-              </SwiperSlide>
-
-              <SwiperSlide>
-                <Card
-                  className='animate__animated animate__zoomIn animate__faster animate__delay-0.5s'
-                  sx={{
-                    borderRadius: 5,
-                    mb: 8,
-                    mr: 3,
-                    ml: 3,
-                    height: 500,
-                    background: 'linear-gradient(360deg, #772fa8, #c471ed)',
-                    '@media (max-width: 481px)': {
-                      height: 425,
-                      mb: 8,
-                    },
-                    '@media (max-width: 899px)': {
-                      height: 400,
-                      mb: 8,
-                    },
-                  }}
-                >
-             No se puede prevenir el TDAH, ya que su causa exacta no se conoce. 
-             Sin embargo, se pueden tomar medidas para reducir los factores de riesgo 
-             y promover un entorno saludable para el desarrollo de los niños.
-
-
-
-                </Card>
-              </SwiperSlide>
-            </Swiper>
-            {/* Octavo slide */}
-
-            {/* Noveno slide */}
-            <Swiper
-              effect={'cards'}
-              grabCursor={true}
-              modules={[EffectCards]}
-              className="mySwiper"
-            >
-              <SwiperSlide>
-                <Card
-                  className='animate__animated animate__zoomIn animate__faster animate__delay-0.5s'
-                  sx={{
-                    borderRadius: 5,
-                    mb: 8,
-                    mr: 3,
-                    ml: 3,
-                    height: 500,
-                    background: 'linear-gradient(360deg, #772fa8, #c471ed)',
-                    '@media (max-width: 481px)': {
-                      height: 425,
-                      mb: 8,
-                    },
-                    '@media (max-width: 899px)': {
-                      height: 400,
-                      mb: 8,
-                    },
-                  }}
-                >
-                  ¿El TDAH afecta el rendimiento académico?
-                </Card>
-              </SwiperSlide>
-
-              <SwiperSlide>
-                <Card
-                  className='animate__animated animate__zoomIn animate__faster animate__delay-0.5s'
-                  sx={{
-                    borderRadius: 5,
-                    mb: 8,
-                    mr: 3,
-                    ml: 3,
-                    height: 500,
-                    background: 'linear-gradient(360deg, #772fa8, #c471ed)',
-                    '@media (max-width: 481px)': {
-                      height: 425,
-                      mb: 8,
-                    },
-                    '@media (max-width: 899px)': {
-                      height: 400,
-                      mb: 8,
-                    },
-                  }}
-                >
-            Sí, el TDAH puede afectar el rendimiento académico debido a los problemas de atención y
-            concentración. Sin embargo, con el apoyo adecuado, 
-            los estudiantes con TDAH pueden tener éxito en la escuela.
+                <SwiperSlide>
+                  <Card
+                    className='animate__animated animate__zoomIn animate__faster animate__delay-0.5s'
+                    sx={{
+                      fontfamily: "roboto",
+                        fontWeight: "bold",
+                        fontSize: 20,
+                        borderRadius: 5,
+                        display: 'flex',
+                        padding: 2.5,
+                        alignItems: 'center',
+                        textAlign: "center",
+                        mb: 8,
+                        mr: 3,
+                        ml: 3,
+                        height: 300,
+                      background: 'linear-gradient(360deg, #772fa8, #c471ed)',
+                      '@media (max-width: 481px)': {
+                        height: 425,
+                        mb: 8,
+                      },
+                      '@media (max-width: 899px)': {
+                        height: 400,
+                        mb: 8,
+                      },
+                    }}
+                  >
+                    No hay una cura conocida para el TDAH, pero con el tratamiento adecuado y
+                    el apoyo adecuado, las personas con TDAH pueden aprender a manejar sus síntomas y
+                    llevar una vida plena y productiva.
 
 
+                  </Card>
+                </SwiperSlide>
+              </Swiper>
+              </Grid>
+              {/* Sétimo slide */}
 
-                </Card>
-              </SwiperSlide>
-            </Swiper>
-            {/* Noveno slide */}
+              {/* Octavo slide */}
+              <Grid item xs={12} sm={6} md={4}>
+              <Swiper
+                effect={'cards'}
+                grabCursor={true}
+                modules={[EffectCards]}
+                className="mySwiper"
+              >
+                <SwiperSlide>
+                  <Card
+                    className='animate__animated animate__zoomIn animate__faster animate__delay-0.5s'
+                    sx={{
+                      fontfamily: "roboto",
+                        fontWeight: "bold",
+                        fontSize: 40,
+                        borderRadius: 5,
+                        display: 'flex',
+                        padding: 2.5,
+                        alignItems: 'center',
+                        textAlign: "center",
+                        mb: 8,
+                        mr: 3,
+                        ml: 3,
+                        height: 300,
+                      background: 'linear-gradient(360deg, #772fa8, #c471ed)',
+                      '@media (max-width: 481px)': {
+                        height: 425,
+                        mb: 8,
+                      },
+                      '@media (max-width: 899px)': {
+                        height: 400,
+                        mb: 8,
+                      },
+                    }}
+                  >
+                    ¿El TDAH se puede prevenir?
+                  </Card>
+                </SwiperSlide>
 
-            {/* Décimo slide */}
-            <Swiper
-              effect={'cards'}
-              grabCursor={true}
-              modules={[EffectCards]}
-              className="mySwiper"
-            >
-              <SwiperSlide>
-                <Card
-                  className='animate__animated animate__zoomIn animate__faster animate__delay-0.5s'
-                  sx={{
-                    borderRadius: 5,
-                    mb: 8,
-                    mr: 3,
-                    ml: 3,
-                    height: 500,
-                    background: 'linear-gradient(360deg, #772fa8, #c471ed)',
-                    '@media (max-width: 481px)': {
-                      height: 425,
+                <SwiperSlide>
+                  <Card
+                    className='animate__animated animate__zoomIn animate__faster animate__delay-0.5s'
+                    sx={{
+                      fontfamily: "roboto",
+                        fontWeight: "bold",
+                        fontSize: 20,
+                        borderRadius: 5,
+                        display: 'flex',
+                        padding: 2.5,
+                        alignItems: 'center',
+                        textAlign: "center",
+                        mb: 8,
+                        mr: 3,
+                        ml: 3,
+                        height: 300,
+                      background: 'linear-gradient(360deg, #772fa8, #c471ed)',
+                      '@media (max-width: 481px)': {
+                        height: 425,
+                        mb: 8,
+                      },
+                      '@media (max-width: 899px)': {
+                        height: 400,
+                        mb: 8,
+                      },
+                    }}
+                  >
+                    No se puede prevenir el TDAH, ya que su causa exacta no se conoce.
+                    Sin embargo, se pueden tomar medidas para reducir los factores de riesgo
+                    y promover un entorno saludable para el desarrollo de los niños.
+                  </Card>
+                </SwiperSlide>
+              </Swiper>
+              </Grid>
+              {/* Octavo slide */}
+
+              {/* Noveno slide */}
+              <Grid item xs={12} sm={6} md={4}>
+              <Swiper
+                effect={'cards'}
+                grabCursor={true}
+                modules={[EffectCards]}
+                className="mySwiper"
+              >
+                <SwiperSlide>
+                  <Card
+                    className='animate__animated animate__zoomIn animate__faster animate__delay-0.5s'
+                    sx={{
+                      fontfamily: "roboto",
+                      fontWeight: "bold",
+                      fontSize: 40,
+                      borderRadius: 5,
+                      display: 'flex',
+                      padding: 2.5,
+                      alignItems: 'center',
+                      textAlign: "center",
                       mb: 8,
-                    },
-                    '@media (max-width: 899px)': {
-                      height: 400,
-                      mb: 8,
-                    },
-                  }}
-                >
-                  ¿El TDAH es lo mismo que la hiperactividad?
-                </Card>
-              </SwiperSlide>
+                      mr: 3,
+                      ml: 3,
+                      height: 300,
+                      background: 'linear-gradient(360deg, #772fa8, #c471ed)',
+                      '@media (max-width: 481px)': {
+                        height: 425,
+                        mb: 8,
+                      },
+                      '@media (max-width: 899px)': {
+                        height: 400,
+                        mb: 8,
+                      },
+                    }}
+                  >
+                    ¿El TDAH afecta el rendimiento académico?
+                  </Card>
+                </SwiperSlide>
 
-              <SwiperSlide>
-                <Card
-                  className='animate__animated animate__zoomIn animate__faster animate__delay-0.5s'
-                  sx={{
-                    borderRadius: 5,
-                    mb: 8,
-                    mr: 3,
-                    ml: 3,
-                    height: 500,
-                    background: 'linear-gradient(360deg, #772fa8, #c471ed)',
-                    '@media (max-width: 481px)': {
-                      height: 425,
-                      mb: 8,
-                    },
-                    '@media (max-width: 899px)': {
-                      height: 400,
-                      mb: 8,
-                    },
-                  }}
-                >
-            No, aunque la hiperactividad es uno de los síntomas del TDAH, 
-            el trastorno abarca más que solo la hiperactividad. 
-            También incluye problemas de atención e impulsividad.
+                <SwiperSlide>
+                  <Card
+                    className='animate__animated animate__zoomIn animate__faster animate__delay-0.5s'
+                    sx={{
+                      fontfamily: "roboto",
+                        fontWeight: "bold",
+                        fontSize: 20,
+                        borderRadius: 5,
+                        display: 'flex',
+                        padding: 2.5,
+                        alignItems: 'center',
+                        textAlign: "center",
+                        mb: 8,
+                        mr: 3,
+                        ml: 3,
+                        height: 300,
+                      background: 'linear-gradient(360deg, #772fa8, #c471ed)',
+                      '@media (max-width: 481px)': {
+                        height: 425,
+                        mb: 8,
+                      },
+                      '@media (max-width: 899px)': {
+                        height: 400,
+                        mb: 8,
+                      },
+                    }}
+                  >
+                    Sí, el TDAH puede afectar el rendimiento académico debido a los problemas de atención y
+                    concentración. Sin embargo, con el apoyo adecuado,
+                    los estudiantes con TDAH pueden tener éxito en la escuela.
+                  </Card>
+                </SwiperSlide>
+              </Swiper>
+              </Grid>
+              {/* Noveno slide */}
 
+              {/* Décimo slide */}
+              <Grid item xs={12} sm={6} md={4}>
+              <Swiper
+                effect={'cards'}
+                grabCursor={true}
+                modules={[EffectCards]}
+                className="mySwiper"
+              >
+                <SwiperSlide>
+                  <Card
+                    className='animate__animated animate__zoomIn animate__faster animate__delay-0.5s'
+                    sx={{
+                      fontfamily: "roboto",
+                        fontWeight: "bold",
+                        fontSize: 40,
+                        borderRadius: 5,
+                        display: 'flex',
+                        padding: 2.5,
+                        alignItems: 'center',
+                        textAlign: "center",
+                        mb: 8,
+                        mr: 3,
+                        ml: 3,
+                        height: 300,
+                      background: 'linear-gradient(360deg, #772fa8, #c471ed)',
+                      '@media (max-width: 481px)': {
+                        height: 425,
+                        mb: 8,
+                      },
+                      '@media (max-width: 899px)': {
+                        height: 400,
+                        mb: 8,
+                      },
+                    }}
+                  >
+                    ¿El TDAH es lo mismo que la hiperactividad?
+                  </Card>
+                </SwiperSlide>
 
-
-                </Card>
-              </SwiperSlide>
-            </Swiper>
-            {/* Décimo slide */}
+                <SwiperSlide>
+                  <Card
+                    className='animate__animated animate__zoomIn animate__faster animate__delay-0.5s'
+                    sx={{
+                      fontfamily: "roboto",
+                        fontWeight: "bold",
+                        fontSize: 20,
+                        borderRadius: 5,
+                        display: 'flex',
+                        padding: 2.5,
+                        alignItems: 'center',
+                        textAlign: "center",
+                        mb: 8,
+                        mr: 3,
+                        ml: 3,
+                        height: 300,
+                      background: 'linear-gradient(360deg, #772fa8, #c471ed)',
+                      '@media (max-width: 481px)': {
+                        height: 425,
+                        mb: 8,
+                      },
+                      '@media (max-width: 899px)': {
+                        height: 400,
+                        mb: 8,
+                      },
+                    }}
+                  >
+                    No, aunque la hiperactividad es uno de los síntomas del TDAH,
+                    el trastorno abarca más que solo la hiperactividad.
+                    También incluye problemas de atención e impulsividad.
+                  </Card>
+                </SwiperSlide>
+              </Swiper>
+              </Grid>
+              {/* Décimo slide */}
             </Grid>
           </Box>
-        </Container>
+        
       </Box>
     </ThemeProvider>
   );
