@@ -5,6 +5,8 @@ import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
+import MenuItem from '@mui/material/MenuItem';
+import Slider from '@mui/material/Slider';
 import DialogTitle from '@mui/material/DialogTitle';
 import Slide from '@mui/material/Slide';
 import axios from 'axios';
@@ -17,11 +19,26 @@ const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
   });
 
+const predefinedCategories = [
+    "Salud",
+    "Estudio",
+    "Hogar",
+    "Compras",
+    "Deporte",
+    "Proyectos",
+    "Tecnologia",
+    "Actividades",
+    "Entretenimieto",
+    "Eventos especiales",
+];
+  
+
 export default function TaskDialog() {
 
   const auth = useAuth();
 
   const [open, setOpen] = React.useState(false);
+
   const [taskData, setTaskData] = React.useState({
     title: '',
     description: '',
@@ -30,6 +47,9 @@ export default function TaskDialog() {
     category: '',
   });
   
+  const [urgency, setUrgency] = React.useState(2); // Inicializar en "Medio"
+
+  const [selectedCategory, setSelectedCategory] = React.useState('');
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -40,12 +60,16 @@ export default function TaskDialog() {
   };
 
   const handleTaskDataChange = (name, value) => {
-    setTaskData((prevTaskData) => ({
-      ...prevTaskData,
-      [name]: value,
-    }));
+    if (name === "urgency") {
+      setUrgency(value); // Actualiza la urgencia directamente
+    } else {
+      // Para otros campos, sigue actualizando el objeto `taskData` como lo hacías antes.
+      setTaskData((prevTaskData) => ({
+        ...prevTaskData,
+        [name]: value,
+      }));
+    }
   };
-  
 
 const handleCreate = async () => {
   try {
@@ -135,28 +159,37 @@ const handleCreate = async () => {
             onChange={(event) => handleTaskDataChange(event.target.name, event.target.value)}
           />
           <TextField
-            color='secondary' 
-            margin="dense"
-            id="urgency"
-            name="urgency"
-            label="Urgencia"
-            type="text"
-            fullWidth
-            variant="outlined"
-            value={taskData.urgency}
-            onChange={(event) => handleTaskDataChange(event.target.name, event.target.value)}
-          />
-          <TextField
-            color='secondary' 
+            color="secondary"
             margin="dense"
             id="category"
             name="category"
             label="Category"
-            type="text"
+            select // Agregar esta prop para convertirlo en un select
             fullWidth
             variant="outlined"
-            value={taskData.category}
-            onChange={(event) => handleTaskDataChange(event.target.name, event.target.value)}
+            value={selectedCategory}
+            onChange={(event) => setSelectedCategory(event.target.value)}
+          >
+            {predefinedCategories.map((category) => (
+              <MenuItem key={category} value={category}>
+                {category}
+              </MenuItem>
+            ))}
+          </TextField>
+
+          <Slider
+            name="urgency"
+            value={urgency}
+            onChange={(event, value) => setUrgency(value)}
+            step={1}
+            marks={[
+              { value: 1, label: 'Bajo' },
+              { value: 2, label: 'Medio' },
+              { value: 3, label: 'Alto' },
+            ]}
+            min={1}
+            max={3}
+            valueLabelDisplay="auto"
           />
           <DateTimePicker
             margin="dense"

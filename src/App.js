@@ -14,6 +14,7 @@ import Appointments from './components/view/Appointments';
 import Chamber from './components/view/Chamber';
 import { esES } from '@mui/x-date-pickers/locales';
 import Information from './components/view/Information';
+import Profile from './components/view/Profile';
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
                 <Route path='/user-appointments' element={ <Appointments/> } />
                 <Route path='/chamber' element={ <Chamber/> } />
                 <Route path='/information' element={ <Information/> } />
+                <Route path='/user-profile' element={ <Profile/> } />
               </Routes>
           </div>
         </BrowserRouter>
