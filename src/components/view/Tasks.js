@@ -13,7 +13,8 @@ import {
   IconButton,
   Tooltip,
   Snackbar,
-  Alert
+  Alert,
+  CssBaseline
 } from '@mui/material';
 import { Assignment as AssignmentIcon } from '@mui/icons-material';
 import { ThemeProvider } from '@mui/material/styles';
@@ -139,6 +140,7 @@ export default function Tasks() {
         }}
       >
         <Container component="main" maxWidth="xs">
+        <CssBaseline/>
         <Box
             sx={{
               marginTop: 8,

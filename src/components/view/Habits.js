@@ -8,21 +8,16 @@ import {
   List,
   ListItem,
   ListItemText,
-  ListItemAvatar,
   ListItemIcon,
-  Divider,
-  Button,
   ListItemSecondaryAction,
   IconButton,
   Tooltip,
-  Snackbar,
-  Alert
+  CssBaseline
 } from '@mui/material';
 import { Assignment as AssignmentIcon } from '@mui/icons-material';
 import { ThemeProvider } from '@mui/material/styles';
 import { themeOptionDark } from './Welcome';
 import HabitDialog from '../HabitDialog';
-import EditTaskDialog from '../EditTaskDialog';
 import AllInclusiveIcon from '@mui/icons-material/AllInclusive';
 import EditIcon from '@mui/icons-material/Edit';
 import ArrowBackIosRounded from '@mui/icons-material/ArrowBackIosRounded';
@@ -98,6 +93,7 @@ export default function Habits() {
         }}
       >
         <Container component="main" maxWidth="xs">
+        <CssBaseline/>
         <Box
             sx={{
               marginTop: 8,

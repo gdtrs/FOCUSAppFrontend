@@ -9,9 +9,9 @@ import {
 } from '@mui/material';
 import HelpCenterIcon from '@mui/icons-material/HelpCenter';
 import ArrowBackIosRounded from '@mui/icons-material/ArrowBackIosRounded';
+import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider } from '@mui/material/styles';
 import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
 import { themeOptionDark } from './Welcome';
 import { useNavigate } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -38,7 +38,7 @@ export default function Information() {
           display: 'flex',
           flexDirection: 'column',
           minHeight: '100vh',
-          backgroundImage: 'url(/backgroundhomescreen.png)',
+          backgroundImage: 'url(/backgrounddarkpurple.png)',
           backgroundRepeat: 'no-repeat',
           backgroundColor: (t) =>
             t.palette.mode === 'dark' ? t.palette.grey[50] : t.palette.grey[900],
@@ -60,6 +60,7 @@ export default function Information() {
           />
         </Tooltip>
         <Container component="main" maxWidth="xs">
+          <CssBaseline/>
           <Box
             sx={{
               marginTop: 8,
@@ -72,7 +73,7 @@ export default function Information() {
             <Avatar sx={{ m: 1, bgcolor: 'secondary.main', width: 70, height: 70 }}>
               <HelpCenterIcon sx={{ width: 60, height: 60 }} />
             </Avatar>
-            <Typography component="h1" variant="h2" sx={{ color: '#fff' }}>
+            <Typography component="h1" variant="h3" sx={{ color: '#fff' }}>
               INFORMACIÓN
             </Typography>
           </Box>

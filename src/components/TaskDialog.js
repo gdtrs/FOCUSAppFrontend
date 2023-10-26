@@ -4,11 +4,12 @@ import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
 import MenuItem from '@mui/material/MenuItem';
+import Grid from '@mui/material/Grid';
 import Slider from '@mui/material/Slider';
 import DialogTitle from '@mui/material/DialogTitle';
 import Slide from '@mui/material/Slide';
+import CssBaseline from '@mui/material/CssBaseline';
 import axios from 'axios';
 
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
@@ -105,6 +106,7 @@ const handleCreate = async () => {
 
   return (
     <div>
+      <CssBaseline/>
       <Button variant="contained" onClick={handleClickOpen}>
         Agregar
       </Button>
@@ -176,34 +178,47 @@ const handleCreate = async () => {
               </MenuItem>
             ))}
           </TextField>
-
-          <Slider
-            name="urgency"
-            value={urgency}
-            onChange={(event, value) => setUrgency(value)}
-            step={1}
-            marks={[
-              { value: 1, label: 'Bajo' },
-              { value: 2, label: 'Medio' },
-              { value: 3, label: 'Alto' },
-            ]}
-            min={1}
-            max={3}
-            valueLabelDisplay="auto"
-          />
-          <DateTimePicker
-            margin="dense"
-            id="datetime"
-            name="datetime"
-            label="Fecha y Hora"
-            type="datetime-local"
-            fullWidth
-            variant="outlined"
-            value={taskData.datetime}
-            defaultValue={dayjs()}
-            onChange={(value) => handleTaskDataChange("datetime", value)}
-            sx={{mt: 2, mb: 1}}
-          />
+          <Grid container>
+            <Grid item >
+              <DateTimePicker
+                margin="dense"
+                id="datetime"
+                name="datetime"
+                label="Fecha y Hora"
+                type="datetime-local"
+                fullWidth
+                variant="outlined"
+                value={taskData.datetime}
+                defaultValue={dayjs()}
+                onChange={(value) => handleTaskDataChange("datetime", value)}
+                sx={{mt: 2, mb: 1, mr: 4}}
+              />
+            </Grid>
+            <Grid
+              item
+              xs
+              sx={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}>
+                <Slider
+                  name="urgency"
+                  value={urgency}
+                  onChange={(event, value) => setUrgency(value)}
+                  step={1}
+                  marks={[
+                    { value: 1, label: 'Bajo' },
+                    { value: 2, label: 'Medio' },
+                    { value: 3, label: 'Alto' },
+                  ]}
+                  min={1}
+                  max={3}
+                  valueLabelDisplay="auto"
+                  sx={{mr: 1}}
+                />
+            </Grid>
+          </Grid>
         </DialogContent>
         <DialogActions
           sx={{

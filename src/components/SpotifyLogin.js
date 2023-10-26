@@ -1,15 +1,20 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from '@mui/material/Button';
 import axios from 'axios';
 import { useAuth } from '../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 function SpotifyLogin() {
   const auth = useAuth();
+  const navigate = useNavigate();
+
+  const [authorizationCode, setAuthorizationCode] = useState(null);
+  const [nickname, setNickname] = useState(null);
 
   const handleURL = async () => {
     try {
       const firebaseAuthenticationId = auth.user.uid;
-
+      debugger
       const response = await axios.get(
         `http://localhost:8000/users_service/get_by_firebase_id/${firebaseAuthenticationId}`
       );
@@ -17,7 +22,6 @@ function SpotifyLogin() {
       if (response.status === 200) {
         if (response.data && response.data.nickname) {
           const userNickname = response.data.nickname;
-
           const loginUrlResponse = await axios.post('http://localhost:8000/spotify_service/get_login_url', {
             nickname: userNickname
           });
@@ -25,28 +29,32 @@ function SpotifyLogin() {
           if (loginUrlResponse.status === 200) {
             const loginUrl = loginUrlResponse.data;
 
-            // Redirigir al usuario a la URL generada por la API de Spotify
-            window.location.href = loginUrl;
+            console.log(loginUrl);
+            // Obtener authorizationCode de loginUrl
+            const code = new URLSearchParams(loginUrl.split('?')[1]).get('code');
+            setAuthorizationCode(code);
           }
         }
       }
     } catch (error) {
+      debugger
       console.error('Error al verificar los datos del usuario:', error);
     }
   };
 
-  // Este efecto se ejecutará cuando el componente se monte (cargue)
   useEffect(() => {
     // Verificar si el usuario está autorizado al cargar la página
     const urlParams = new URLSearchParams(window.location.search);
-    const authorizationCode = urlParams.get('code');
-    const nickname = urlParams.get('state');
+    const code = urlParams.get('code');
+    const state = urlParams.get('state');
 
-    if (authorizationCode && nickname) {
+    if (code && state) {
       // Aquí puedes manejar la respuesta del login_webhook
-      handleLoginWebhook(authorizationCode, nickname);
+      setAuthorizationCode(code);
+      setNickname(state);
+      handleLoginWebhook(code, state);
     }
-  }, []);
+  }, [authorizationCode, nickname]);
 
   const handleLoginWebhook = async (code, state) => {
     try {
@@ -55,8 +63,7 @@ function SpotifyLogin() {
       );
 
       if (loginWebhookResponse.status === 200) {
-        // Redirigir a la página principal u otra página según sea necesario
-        // Puedes utilizar react-router o window.location.href para hacer esto.
+        
       }
     } catch (error) {
       console.error('Error en el login_webhook:', error);
@@ -64,15 +71,19 @@ function SpotifyLogin() {
   };
 
   return (
-    <div className="App">
-      <header className="App-header">
+    <div>
+      <header>
         <Button
-          className="btn-spotify"
+          className='animate__animated animate__zoomIn'
           onClick={handleURL}
           variant="contained"
-          color="primary"
+          color='secondary'
+          sx={{
+            backgroundColor: '#1db954'
+          }}
         >
-          Login with Spotify
+          <img src='/spotify.svg' width='24' style={{ marginRight: 10 }} />
+          Iniciar Sesión con Spotify
         </Button>
       </header>
     </div>
@@ -80,4 +91,5 @@ function SpotifyLogin() {
 }
 
 export default SpotifyLogin;
+
 

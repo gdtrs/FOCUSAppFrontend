@@ -4,8 +4,12 @@ import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
+import MenuItem from '@mui/material/MenuItem';
+import Slider from '@mui/material/Slider';
 import DialogTitle from '@mui/material/DialogTitle';
 import Slide from '@mui/material/Slide';
+import Grid from '@mui/material/Grid';
+import CssBaseline from '@mui/material/CssBaseline';
 import axios from 'axios';
 
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
@@ -15,6 +19,19 @@ import { useAuth } from '../context/AuthContext';
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
+
+const predefinedCategories = [
+  "Salud",
+  "Estudio",
+  "Hogar",
+  "Compras",
+  "Deporte",
+  "Proyectos",
+  "Tecnologia",
+  "Actividades",
+  "Entretenimieto",
+  "Eventos especiales",
+];
 
 export default function HabitDialog() {
 
@@ -92,6 +109,7 @@ export default function HabitDialog() {
 
   return (
     <div>
+      <CssBaseline/>
       <Button variant="contained" onClick={handleClickOpen}>
         Agregar
       </Button>
@@ -148,30 +166,6 @@ export default function HabitDialog() {
           <TextField
             color='secondary' 
             margin="dense"
-            id="urgency"
-            name="urgency"
-            label="Urgencia"
-            type="text"
-            fullWidth
-            variant="outlined"
-            value={habitData.urgency}
-            onChange={(event) => handleHabitDataChange(event.target.name, event.target.value)}
-          />
-         <TextField
-            color='secondary' 
-            margin="dense"
-            id="category"
-            name="category"
-            label="Categoria"
-            type="text"
-            fullWidth
-            variant="outlined"
-            value={habitData.category}
-            onChange={(event) => handleHabitDataChange(event.target.name, event.target.value)}
-          />
-          <TextField
-            color='secondary' 
-            margin="dense"
             id="weekday"
             name="weekday"
             label="Semanas"
@@ -181,19 +175,65 @@ export default function HabitDialog() {
             value={habitData.weekday}
             onChange={(event) => handleHabitDataChange(event.target.name, event.target.value)}
           />
-          <DateTimePicker
+          <TextField
+            color="secondary"
             margin="dense"
-            id="datetime"
-            name="datetime"
-            label="Fecha y Hora"
-            type="datetime-local"
+            id="category"
+            name="category"
+            label="Category"
+            select // Agregar esta prop para convertirlo en un select
             fullWidth
             variant="outlined"
-            value={habitData.time}
-            defaultValue={dayjs()}
-            onChange={(value) => handleHabitDataChange("datetime", value)}
-            sx={{mt: 2, mb: 1}}
-          />
+            value={habitData.category}
+            onChange={(event) => handleHabitDataChange(event.target.name, event.target.value)}
+          >
+            {predefinedCategories.map((category) => (
+              <MenuItem key={category} value={category}>
+                {category}
+              </MenuItem>
+            ))}
+          </TextField>
+          <Grid container>
+            <Grid item >
+              <DateTimePicker
+                margin="dense"
+                id="datetime"
+                name="datetime"
+                label="Fecha y Hora"
+                type="datetime-local"
+                fullWidth
+                variant="outlined"
+                value={habitData.time}
+                defaultValue={dayjs()}
+                onChange={(value) => handleHabitDataChange("datetime", value)}
+                sx={{mt: 2, mb: 1, mr: 4}}
+              />
+            </Grid>
+            <Grid
+              item
+              xs
+              sx={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}>
+              <Slider
+                name="urgency"
+                value={habitData.urgency}
+                onChange={(event) => handleHabitDataChange(event.target.name, event.target.value)}
+                step={1}
+                marks={[
+                  { value: 1, label: 'Bajo' },
+                  { value: 2, label: 'Medio' },
+                  { value: 3, label: 'Alto' },
+                ]}
+                min={1}
+                max={3}
+                valueLabelDisplay="auto"
+                sx={{mr: 1}}
+              />
+            </Grid>
+          </Grid>
         </DialogContent>
         <DialogActions
           sx={{
